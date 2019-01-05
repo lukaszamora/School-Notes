@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,mathtools}
+\usepackage{empheq}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+% L-Hospitals rule thing
+\newcommand\myeq{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny L.H}}}{=}}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 4}
+\lhead{MATH 412}
+\cfoot{\thepage}
+
+\title{MATH 407 - Homework 4}
+\author{Lukas Zamora}
+\date{September 27, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{2.102} $  $ \\
+    	First note that $ f(z) = \dfrac{z^2+4}{z-2i} = \dfrac{(z-2i)(z+2i)}{z-2i} = z+2i $.
+    	\begin{enumerate}[label=\alph*.)]
+    		\item We must show that for any $ \epsilon > 0 $, we can find $ \delta > 0 $ such that $ |z+2i - L| < \epsilon $ when $ 0 < |z-i| < \delta $. In this case $ L = 3i $. So we have 
+    		\[
+    			|z+2i-3i| < \epsilon \Rightarrow |z-i| < \epsilon
+    		\]
+    		So if we take $ \delta = \epsilon $, the definition is fulfilled. Thus $ \lim\limits_{z\to i} f(z) $ exists and $ \lim\limits_{z\to i} f(z) = 3i $.
+    		
+    		\item No, if we compute this limit as $ z \to 0 $ on the real and on the imaginary axis, we will see that for the real axis, $ \lim_{x\to 2i} f(z) = (4+y)i $. When we compute the limit on the imaginary axis, we see that $ \lim_{y\to 2i} = x+4i $. Thus the limit depends on the direction in which we approach $ 2i $, which implies that $ f(z) $ is not continuous at $ z=2i $.
+    	\end{enumerate}
+    \end{prob}
+
+	\begin{prob}{2.142}
+		\begin{align*}
+			\tan(z) = \frac{\sin(z)}{\cos(z)} &= \frac{\sin(x)\cosh(y) + i \cos(x)\sinh(y)}{\cos(x)\cosh(y) - i \sin(x)\sinh(y)} \cdot \frac{\cos(x)\cosh(y) + i \sin(x)\sinh(y)}{\cos(x)\cosh(y) + i \sin(x)\sinh(y)} \\
+			& = \frac{\sin(x)\cos(x) + i \sinh(y)\cosh(y)}{\cosh^2(y) - \sin^2(x)} \\
+			& = \frac{\sin(2x) + i \sinh(2y)}{2\cosh^2(y) - 2\sinh^2(x) + 1 - 1} \\
+			& = \frac{\sin(2x) + i \sinh(2y)}{\cos(2x) + \cosh(2y)} \\
+			& \therefore \boxed{ u(x,y) = \frac{\sin(2x)}{\cos(2x) + \cosh(2y)} \, , \, v(x,y) = \frac{\sinh(2y)}{\cos(2x) + \cosh(2y)} }
+		\end{align*}
+	\end{prob}
+
+	\begin{prob}{3.45} $ $ \vspace{2mm} \\
+		$ f(z) = |z|^2 = x^2+y^2 $
+		$$ \dfrac{\partial u}{\partial x} = 2x \, , \, \dfrac{\partial u}{\partial y} = 2y \, , \, \dfrac{\partial v}{\partial x} = 0 \, , \, \dfrac{\partial v}{\partial y} = 0 $$
+		
+		By the Cauchy-Riemann equations, $ \partial u / \partial x \neq \partial v / \partial y $ and $ \partial v / \partial x \neq - \partial u / \partial y $. Thus $ f(z) $ is not differentiable anywhere.
+	\end{prob}
+
+	\begin{prob}{3.48} $ $ \vspace{2mm} \\
+		$ f(z) = x^2 + iy^3 $
+		$$ \dfrac{\partial u}{\partial x} = 2x \, , \, \dfrac{\partial u}{\partial y} = 0 \, , \, \dfrac{\partial v}{\partial x} = 0 \, , \, \dfrac{\partial v}{\partial y} = 3y^2 $$
+		
+		By the Cauchy-Riemann equations, $ \partial v / \partial x = - \partial u / \partial y $, but $ \partial u / \partial x \neq  \partial v / \partial y $. Thus $ f(z) $ is not analytic.
+	\end{prob}
+
+	\begin{prob}{3.50} $  $
+		\begin{enumerate}[label=\alph*.)]
+			\item $ u(x,y) = 2x(1-y) $ 
+			
+			$$ \dfrac{\partial u}{\partial x} = 2(1-y), \dfrac{\partial u}{\partial y} = -2x \Rightarrow \dfrac{\partial^2 u}{\partial x^2} = \dfrac{\partial^2 u}{\partial y^2} = 0 $$ 
+			
+			So $ u(x,y) $ satisfies Laplace's equation and is therefore harmonic.
+			
+			\item By the first Cauchy-Riemann equation,
+			\[
+				\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \Rightarrow 2(1-y) = \frac{\partial v}{\partial y} \Rightarrow v(x,y) = \int 2(1-y) \,dy = 2y - y^2 + h(x)
+			\]
+			And by the second Cauchy-Riemann equation,
+			\[
+				-\frac{\partial u}{\partial y} = \frac{\partial v}{\partial x} \Rightarrow 2x = h'(x) \Rightarrow h(x) = x^2
+			\]
+			\[
+				 \therefore \boxed{v(x,y) = 2y-y^2+x^2}
+			\]
+			
+			\item We know that $ f(z) = u(x,y) + iv(x,y) $. So
+				\begin{align*}
+						 f(z) &= 2x(1-y) + i(2y - y^2 + x^2) \\
+						 &= 2x - 2xy + i2y - iy^2 + ix^2 \\
+						 &= ix^2 - iy^2 - 2xy + 2x + i2y \\
+						 &= i(x^2-y^2 + i2xy) + 2(x+iy) \\
+						 &= \boxed{iz^2 + 2z} 
+				\end{align*}
+		\end{enumerate}
+	\end{prob}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+\end{document}

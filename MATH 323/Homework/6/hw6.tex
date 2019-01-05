@@ -1,0 +1,149 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb}
+\usepackage{esint}
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 6}
+\lhead{MATH 323}
+\cfoot{\thepage}
+
+\title{MATH 323 - Homework 6}
+\author{Lukas Zamora}
+\date{October 23, 2018}
+
+\setlength\parindent{0pt}
+
+
+\begin{document}
+
+    \maketitle
+
+    \begin{prob}{4.5.6} $ $
+        \begin{enumerate}[label=\alph*.)]
+        	\item Suppose $ \mathbf{x}_1, \mathbf{x}_2 $ are solutions, then $ \mathbf{Ax}_1 = \mathbf{0} $ and $ \mathbf{Ax}_2 = \mathbf{0} $. Then for any scalars $ c_1, c_2 \in \mathbb{R} $, $ \mathbf{A}(c_1\mathbf{x}_1 + c_2\mathbf{x}_2) = c_1\mathbf{Ax}_1 + c_2\mathbf{Ax}_2 = c_1(\mathbf{0}) + c_2(\mathbf{0}) = \mathbf{0} $. Thus $ c_1\mathbf{x}_1 + c_2\mathbf{x}_2 $ is also a solution. Hence $ \mathcal{W} $ is a subspace of $ \mathbb{R}^4 $.
+        	
+        	\item Converting $ \mathbf{A} $ into row echelon form,
+        		\begin{align*}
+        			\mathbf{A} = 
+        				\begin{bmatrix}
+        					\begin{array}{rrrr}
+        						-1 & -2 & -4 & 8 \\ 
+        						 3 & 4  & 6  & -14 \\
+        						-2 & -1 & 1  & 7 \\
+        						1  & 0  & -2 & 0 \\
+        						2  & 3  & 5  & -12
+        					\end{array}
+        				\end{bmatrix}
+        			&\longrightarrow 
+        				\begin{bmatrix}
+        					\begin{array}{rrrr}
+        						1 & 0  & -2  & 0 \\ 
+        						0 & 4  & 12  & -14 \\
+        						0 & -1 & -3  & 7 \\
+        						0 & -2 & -6  & 8 \\
+        						0 & 3  & 9   & -12
+        					\end{array}
+        				\end{bmatrix} \\ \\
+        			&\longrightarrow
+        				\begin{bmatrix}
+        					\begin{array}{rrrr}
+        						1 & 0  & -2 & 0 \\ 
+        						0 & 1  & 3  & -4 \\
+        						0 & 0  & 1  & 3 \\
+        						0 & 0  & 0  & 1 \\
+        						0 & 0  & 0  & 0
+        					\end{array}
+        				\end{bmatrix} \\ \\
+        			&\longrightarrow
+        				\begin{bmatrix}
+        					\begin{array}{rrrr}
+        						1 & 0  & -2 & 0 \\ 
+        						0 & 1  & 3  & -4 \\
+        						0 & 0  & 1  & 1 \\
+        						0 & 0  & 0  & 0 \\
+        						0 & 0  & 0  & 0
+        					\end{array}
+        				\end{bmatrix}
+        		\end{align*}
+        	We have 3 nonzero rows. Let $ x_1 = 2\alpha, x_2 = -3\alpha, x_3 = \alpha, x_4 = 0 $. Then our basis for $ \mathcal{W} $ is
+        	\[
+        		\left\{
+        			\begin{pmatrix}
+        				2 \\ -3 \\ 1 \\ 0
+        			\end{pmatrix}
+        		\right\}
+        	\]
+        	
+        	\item From the basis, $ \dim(\mathcal{W}) = 1 $, and from the reduced row echelon form of $ \mathbf{A}, \, \text{rank}(\mathbf{A}) = 3 $. Thus $ \dim(\mathcal{W}) + \text{rank}(\mathbf{A}) = 1 + 3 = 4. $ 
+        \end{enumerate}
+    \end{prob}
+	
+	\newpage
+	
+	\begin{prob}{4.5.7} $  $ \vspace{2mm} \\
+		First note that $ f^{(k)} $ is a $ (n-k)^{th} $ polynomial and it cannot be expressed as a linear combination of the previous degree polynomials, i.e, $ f^{(k)} \notin \text{span}\left( \left\{ f^{(k+1)}, f^{(k+2)}, \dots, f^{(n)} \right\} \right) $. \\
+		
+		Suppose $ S = \left\{ f, f', f'', \dots, f^{(n)} \right\} $ is linearly dependent, i.e, $ a_0f + a_1f' + a_2f'' + \dots + a_n f^{(n)} = 0 $ for some $ a_0, \dots, a_n \in \mathbb{R} $ (not all 0). Suppose $ a_k $ is the minimum coefficient. Then
+			\begin{align*}
+				&a_0f + a_1f' + a_2f'' + \dots + a_nf^{(n)} = 0 \\
+				\Rightarrow \; &0f + 0f' + \dots + 0f^{(k-1)} + a_k f^{(k)} + a_{k+1} f^{(k+1)} + \dots + a_n f^{(n)} = 0 \\
+				\Rightarrow \; & a_k f^{(k)} = (-a_{k+1}) f^{(k+1)} + (-a_{k+2})f^{(k+2)} + \dots + (-a_n) f^{(n)} \\
+				\Rightarrow \; & f^{(k)} = \left( -\frac{a_{k+1}}{a_k} \right) f^{(k+1)} + \left( -\frac{a_{k+2}}{a_k} \right) f^{(k+2)} + \dots + \left( -\frac{a_n}{a_k} \right) f^{(n)} \\
+				\Rightarrow \; & f^{(k)} \in \text{span}\left( \left\{ f^{(k+1)}, f^{(k+2)}, \dots, f^{(n)} \right\} \right)
+			\end{align*}
+			which is a contradiction. Thus $ S $ is linearly independent. \\
+			
+			We know that in a vector space $ \mathcal{V} $ with dimension $ n $, $ |S| $ is always $\leq n $. If $ |S| = n $, then $ S $ is a basis for $ \mathcal{V} $. So we have $ \dim(\mathcal{P}_n) = n+1 $ and $ |S| = n+1 $. Since $ |S| = \dim(\mathcal{P}_n) $, $ S $ is a basis for $ \mathcal{P}_n $. \\
+	\end{prob}
+
+	\begin{prob}{4.5.8} $  $
+		\begin{enumerate}[label=\alph*.)]
+			\item Let $ \mathbf{A} $ be a $ 2\times 2 $ matrix. Then the charateristic polynomial of $ \mathbf{A} $ is $$ \lambda^2 - \text{tr}(\mathbf{A})\lambda + \det(\mathbf{A}) = 0 $$ Since every matrix satisfies its characteristic polynomial, we have $$ \mathbf{A}^2 - \text{tr}(\mathbf{A})\mathbf{A} + \det(\mathbf{A})\mathbf{I}_2 = \mathbf{0}_2 $$ Hence there is a nonzero polynomial of degree 2. This actually has degree 4 if we take the coefficients of $ \mathbf{A}^3 $ and $ \mathbf{A}^4 $ to both be zero.
+			
+			\item By part (a), we know that the characteristic polynomial of $ \mathbf{B} $ will be of degree $ n $, which will be satisfied by $ \mathbf{B} $. Hence there exists a nonzero polynomial $\mathbf{p} \in \mathcal{P}_n \subseteq \mathcal{P}_{n^2} $ such that $ \mathbf{p}(\mathbf{B}) = \mathbf{0}_n $.
+		\end{enumerate}
+		$  $ 
+	\end{prob}
+
+	\begin{prob}{4.5.13} $  $
+		\begin{proof}
+			By contrapositive method. If $ S $ spans $ \mathcal{V} $, then $ S $ is a basis by Theorem 4.12. We also have that  If $ S $ is linearly independent, then $ S $ is a basis by Theorem 4.12.
+		\end{proof}
+		$  $
+	\end{prob}
+
+	
+	
+	\begin{prob}{4.5.14} $  $
+		\begin{proof}
+			Suppose $ S $ spans $ \mathcal{V} $, then $ S $ is a basis for $ \mathcal{V} $ by Theorem 4.12. Similarly, suppose $ S $ is linearly independent and also $ |S| = \dim(\mathcal{V}) $. Then by Theorem 4.12, $ S $ is a basis for $ \mathcal{V} $, and thus $ S $ spans $ \mathcal{V} $.
+		\end{proof}
+		$  $
+	\end{prob}
+    
+
+
+
+
+\end{document}

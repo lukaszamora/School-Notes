@@ -1,0 +1,129 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,mathtools}
+\usepackage{empheq}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+% L-Hospitals rule thing
+\newcommand\myeq{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny L.H}}}{=}}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 5}
+\lhead{MATH 407}
+\cfoot{\thepage}
+
+\title{MATH 407 - Homework 5}
+\author{Lukas Zamora}
+\date{October 11, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{4.32c} $  $ \vspace{2mm} \\ 
+    	From $ (0,1) $ to $ (0,5) $, $ x=0, \, dx=0 $. We then have
+    	\[
+    		\int_{1}^{5} 2y \, dy = y^2 \Big|_{1}^{5} = 24
+    	\]
+    	From $ (0,5) $ to $ (2,5) $, $ y = 0, \, dy = 0 $. We then have
+    	\[
+    		\int_{0}^{2} 3x + 5 \, dx = \frac{3}{2}x^2 + 5x \Big|_{0}^{2} = 16 
+    	\]
+    	Thus the total integral is $ 24+16= \boxed{40} $.
+    \end{prob}
+
+	\begin{prob}{4.33a} $  $
+		\begin{align*}
+			\oint_C (x+2y)\,dx + (y-2x)\,dy &= \int_{0}^{2\pi} (4\cos\theta + 6\sin\theta)(-4\sin\theta) + (3\sin\theta - 8\cos\theta)(3\cos\theta) \, d\theta \\
+			&= \int_{0}^{2\pi} -16\sin\theta\cos\theta - 24\sin^2\theta + 9\sin\theta\cos\theta - 24\cos^2\theta \, d\theta \\
+			&= \int_{0}^{2\pi} -5\sin\theta\cos\theta - 24 \, d\theta \\
+			&= \frac{5}{2}\cos^2\theta \Big|_{0}^{2\pi} - 48\pi \\
+			&= \boxed{-48\pi}
+		\end{align*}
+	\end{prob}
+
+	\begin{prob}{4.34a} $  $ \vspace{2mm} \\
+		Using the parameterization $ x=t, \, y=2t^2, \, dx = dt, \, dy = 4t \, dt, \, dz = (1+i4t)\,dt $, the integral becomes
+		\begin{align*}
+			\int_C (x^2-iy^2)\,dz &= \int_{1}^{2} (t^2-4it^4)(1+4it)\,dt \\
+			&= \int_{1}^{2} t^2 + 16t^5 \, dt + i \int_{1}^{2} 4t^3 - 4t^4 \, dt \\
+			&= \frac{1}{3}t^3 \Big|_{1}^{2} + \frac{16}{6} t^6 \Big|_{1}^{2} + i \left( t^4 \Big|_{1}^{2} - \frac{4}{5}t^5 \Big|_{1}^{2} \right) \\
+			&= \frac{8}{3} - \frac{1}{3} + \frac{32}{3} - \frac{16}{6} + i \left( 15 - \frac{128}{5} - \frac{4}{5} \right) \\
+			&= \boxed{\frac{511}{3} - \frac{49}{5}i}
+		\end{align*}
+	\end{prob}
+
+	\newpage
+
+	\begin{prob}{4.36a} $  $ \vspace{2mm} \\
+		Using the parameterization $ h(\theta) = 2e^{i\theta}, \, h'(\theta) = 2ie^{i\theta}, \, 0<\theta < \frac{\pi}{2} $, the integral becomes
+		\begin{align*}
+			\int_C z^2 + 3z \, dz &= \int_{0}^{\pi/2} \left( 4e^{2i\theta} + 6e^{i\theta} \right) 2ie^{i\theta} \, d\theta \\
+			&= \int_{0}^{\pi/2} 8ie^{3i\theta} + 12ie^{2i\theta} \, d\theta \\
+			&= \frac{8}{3} e^{3i\theta} \Big|_{0}^{\pi/2} + 6e^{2i\theta} \Big|_{0}^{\pi/2} \\
+			&= -\frac{8}{3}i - \frac{8}{3} - 6 - 6\\
+			&= \boxed{-\frac{44}{3} - \frac{8}{3}i}
+		\end{align*}
+	\end{prob}
+
+	\begin{prob}{4.36b} $  $ \vspace{2mm} \\
+		Using the parameterization $ h(t) = 2 + t(-2+2i), \, h'(t) = -2+2i, \, 0<t<1 $, the integral becomes
+		\begin{align*}
+			\int_C z^2 + 3z \, dz &= \int_{0}^{1} [ (2+t(-2+2i))^2 + 3(2+t(-2+ti)) ](-2+2i) \, dt \\
+			&= \int_{0}^{1} (-20+20i) - 56it + (16+16i)t^2 \, dt \\
+			&= -20+20i - 56i \left( \frac{1}{2} t^2 \right)\Big|_{0}^{1} + (16+16i) \left(\frac{1}{3}t^3\right) \Big|_{0}^{1} \\
+			&= \boxed{-\frac{44}{3} - \frac{8}{3}i}
+		\end{align*}
+	\end{prob}
+
+	\begin{prob}{4.39a} $  $ \vspace{2mm} \\
+		Using the parameterization $ h(\theta) = e^{i\theta}, \, h'(\theta) = ie^{i\theta}, \, 0<\theta<2\pi $, the integral becomes
+		\begin{align*}
+			\oint_C \bar{z}^2 \, dz &= \int_{0}^{2\pi} \left( e^{-i\theta} \right)^2 \left(ie^{i\theta}\right) \, d\theta \\
+			&= i\int_{0}^{2\pi} e^{-i\theta} \, d\theta \\
+			&= -e^{-i\theta} \Big|_{0}^{2\pi} = -\left( e^{-2\pi i} -1  \right) = \boxed{0}
+		\end{align*}
+	\end{prob}
+
+	\begin{prob}{4.39b} $  $ \vspace{2mm} \\
+		Using the parameterization $ h(\theta) = 1 + e^{i\theta}, \, h'(\theta) = ie^{i\theta}, \, 0<\theta<2\pi $, the integral becomes
+		\begin{align*}
+			\oint_C \bar{z}^2 \, dz &= \int_{0}^{2\pi} \left( 1 + e^{-i\theta} \right)^2 \left( ie^{i\theta} \right) \, d\theta \\
+			&= \int_{0}^{2\pi} \left( 1 + 2e^{-i\theta} + e^{-2i\theta} \right) \left( ie^{i\theta} \right) \, d\theta \\
+			&= \int_{0}^{2\pi} 2i + ie^{-i\theta} + ie^{i\theta} \, d\theta \\
+			&= 4\pi i - e^{i\theta} \Big|_{0}^{2\pi} + e^{i\theta} \Big|_{0}^{2\pi} \\
+			&= 4\pi i - \left( e^{-2\pi i}-1 \right) + \left( e^{2\pi i} - 1 \right) \\
+			&= \boxed{4\pi i}
+		\end{align*}
+	\end{prob}
+
+
+    
+    
+\end{document}

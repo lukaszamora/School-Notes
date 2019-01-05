@@ -1,0 +1,274 @@
+\documentclass[10pt,reqno]{book} 
+\usepackage{amsmath,amssymb,amsfonts} 
+\usepackage{graphics,tikz}   
+
+
+\DeclareGraphicsExtensions{.pdf}
+\parindent 1cm
+\parskip 0.2cm
+\topmargin 0.2cm
+\oddsidemargin 1cm
+\evensidemargin 0.5cm
+\textwidth 15cm
+\textheight 21cm
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+
+\def\R{\mathbb{R}}
+\def\S{\mathbb{S}}
+\def\I{\mathbb{I}}
+\makeindex
+
+
+\title{Calculus I}
+
+\author{Lukas Zamora}
+
+\date{\today}
+\pagestyle{headings}
+\pagenumbering{arabic}
+
+\include{ch1}
+\include{ch2}
+\pagestyle{headings}
+
+\begin{document}
+	
+	\maketitle
+	\addcontentsline{toc}{chapter}{Contents}
+	\pagenumbering{arabic}
+	\tableofcontents
+	
+	\chapter{Limits}\normalsize
+
+	\section{Tangent Lines}
+
+	In this section we are going to take a look at two fairly important problems in the study of calculus. There are two reasons for looking at these problems now. \\ \\
+	First, both of these problems will lead us into the study of limits, which is the topic of this chapter after all. Looking at these problems here will allow us to start to understand just what a limit is and what it can tell us about a function. Secondly, the rate of change problem that we're going to be looking at is one of the most important concepts that we'll encounter in the second chapter of this course. In fact, it’s probably one of the most important concepts that we'll encounter in the whole course. So looking at it now will get us to start thinking about it from the very beginning.\\ \\
+	\textbf{Tangent Lines}\\
+	The first problem that we're going to take a look at is the tangent line problem. Before getting into this problem it would probably be best to define a tangent line. A \textit{tangent line} to the function $ f(x) $ at the point $ x = a $ is a line that just touches the graph of the function at the point in question and is ``parallel'' (in some way) to the graph at that point. Take a look at the graph below.
+	\begin{center}
+		\begin{tikzpicture}
+			\draw(-2,0) -- (4,0) node[right] {$x$};
+			\draw(0,-2) -- (0,2) node[above] {$y$};
+			
+			\draw[draw=red] (-1.8,0.2) .. controls(-0.5,2) and (2,-3) .. (3.8,1.9) node[right] {$f(x)$};
+			\draw[draw=blue] (-2,1.05) -- (4,-1.1);
+			
+			\node[text width=2cm,align=center] at (-2,1.75) {We got a tangent line\\ at this point};
+			\node[text width=2cm,align=center] at (2.5,-1.5) {Not a tangent line here};
+			
+			\draw[->] (-1,1.25) -- (-0.6,0.6);
+			\draw[->] (2,-1) -- (1.8,-0.4);
+		\end{tikzpicture}
+	\end{center}
+	In this graph the line is a tangent line at the indicated point because it just touches the graph at that point and is also ``parallel'' to the graph at that point. Likewise, at the second point shown, the line does just touch the graph at that point, but it is not ``parallel''to the graph at that point and so it's not a tangent line to the graph at that point.\\ \\
+	At the second point shown (the point where the line isn't a tangent line) we will sometimes call the line a \textit{secant line}.\\ \\
+	\textbf{Rate of Change}\\
+	The next problem that we need to look at is the rate of change problem. This will turn out to be one of the most important concepts that we will look at throughout this course.\\ \\
+	Here we are going to consider a function, $ f(x) $, that represents some quantity that varies as $ x $ varies. For instance, maybe $ f(x) $ represents the amount of water in a holding tank after $ x $ minutes. Or maybe $ f(x) $ is the distance traveled by a car after $ x $ hours. In both of these example we used $ x $ to represent time. Of course $ x $ doesn't have to represent time, but it makes for examples that are easy to visualize.\\ \\
+	What we want to do here is determine just how fast $ f(x) $ is changing at some point, say $ x=a $. This is called the \textit{instantaneous rate of change} or sometimes just \textit{rate of change} of $ f(x) $ at $ x=a $. \\ \\
+	To compute the average rate of change of $ f(x) $ at $ x=a $ all we need to do is to choose another point, say $ x $, and then the average rate of change will be,
+	\begin{align*}
+		A.R.C &= \frac{\text{change in } f(x)}{\text{change in } x}\\
+		&= \frac{f(x) - f(a)}{x-a}
+	\end{align*}
+	Then to estimate the instantaneous rate of change at $ x=a $ all we need to do is to choose values of $ x $ getting closer and closer to $ x=a $ (don't forget to chose them on both sides of $ x=a $) and compute values of $ A.R.C $. We can then estimate the instantaneous rate of change from that.
+	
+	\section{The Limit}
+	
+	A \textit{limit} is the value that a function or sequence ``approaches'' as the input or index approaches some value. Limits are essential to calculus (and mathematical analysis in general) and are used to define continuity, derivatives, and integrals. We say that ``the limit of $ f(x) $ is $ L $ as $ x $ approaches $ a $'' and write this as
+	\[ \lim\limits_{x\to a} f(x) = L \]
+	provided we can make $ f(x) $ as close to $ L $ as we want for all $ x $ sufficiently close to $ a $, from both sides, without actually letting $ x $ be $ a $.\\ \\
+	So just what does this definition mean? Well let's suppose that we know that the limit does in fact exist. According to our definition we can then decide how close to $ L $ that we'd like to make $ f(x) $. For sake of argument let's suppose that we want to make $ f(x) $ no more than 0.001 away from $ L $. This means that we want one of the following
+	
+	\[ f(x) - L < 0.001 \quad \text{if } f(x) \text{ is larger than L} \]
+	\[ L - f(x) < 0.001 \quad \text{if } f(x) \text{ is smaller than L} \]
+	Now according to the definition this means that if we get $ x $ sufficiently close to $ a $ we can make one of the above true. However, it actually says a little more. It actually says that somewhere out there in the world is a value of $ x $, say $ X $, so that for all $ x $'s that are closer to $ a $ than $ X $ then one of the above statements will be true. \\ \\
+	This is actually a fairly important idea. There are many functions out there in the world that we can make as close to $ L $ for specific values of $ x $ that are close to $ a $, but there will be other values of $ x $ closer to $ a $ that give functions values that are nowhere near close to $ L $. In order for a limit to exist once we get $ f(x) $ as close to $ L $ as we want for some $ x $ then it will need to stay in that close to $ L $ (or get closer) for all values of $ x $ that are closer to $ a $. We'll see an example of this later in this section.\\ \\
+	In somewhat simpler terms the definition says that as $ x $ gets closer and closer to $ x=a $ (from both sides of course) then $ f(x) $ \textit{must} be getting closer and closer to $ L $. Or, as we move in towards $ x=a $ then $ f(x) $ \textit{must} be moving in towards $ L $.\\ \\
+	It is important to note once again that we must look at values of $ x $ that are on both sides of $ x=a $. We should also note that we are not allowed to use $ x=a $ in the definition. We will often use the information that limits give us to get some information about what is going on right at $ x=a $, but the limit itself is not concerned with what is actually going on at $ x=a $. The limit is only concerned with what is going on around the point $ x=a $. This is an important concept about limits that we need to keep in mind. An alternative notation that we will occasionally use in denoting limits is
+	\[ f(x) \to L \qquad \text{as} \qquad x \to a \]
+	
+	\noindent \textbf{Example}. Estimate the value of the following limit
+	\[ \lim\limits_{x\to 2} \frac{x^2 + 4x -12}{x^2-2x} \]
+	\textit{Solution.} We will choose values of $ x $ that get closer and closer to $ x=2 $ and plug these values into the function. Doing this gives the following table of values.
+	\begin{center}
+		\begin{tabular}{ll|ll}
+			$ x $   & $ f(x) $    & $ x $   & $ f(x) $    \\ \hline
+			2.5     & 3.4         & 1.5     & 5.0         \\
+			2.1     & 3.857142857 & 1.9     & 4.157894737 \\
+			2.01    & 3.985074627 & 1.99    & 4.015075377 \\
+			2.001   & 3.998500750 & 1.999   & 4.001500750 \\
+			2.0001  & 3.999850007 & 1.9999  & 4.000150008 \\
+			2.00001 & 3.999985000 & 1.99999 & 4.000015000
+		\end{tabular}
+	\end{center}
+	Note that we made sure and picked values of $ x $ that were on both sides of $ x=2 $ and that we moved in very close to $ x=2 $ to make sure that any trends that we might be seeing are in fact correct. Also notice that we can't actually plug in $ x=2 $ into the function as this would give us a division by zero error. This is not a problem since the limit doesn't care what is happening at the point in question.\\ \\
+	From this table it appears that the function is going to 4 as $ x $ approaches 2, so
+	\[ \lim\limits_{x\to 2} \frac{x^2 + 4x -12}{x^2-2x} = 4  \]
+	Let's think a little bit more about what’s going on here. Let's graph the function from the last example. The graph of the function in the range of $ x $'s that were interested in is shown below.
+	\begin{center}
+		\begin{tikzpicture}
+			
+			\draw (0,0) -- (5,0) node[right] {$x$};
+			\draw (0,0) -- (0,3) node[above] {$y$};
+			
+			
+			\draw[draw=red] (0.6,2.8) to[bend right] (4.8,0.6);
+			\node at (1.5,2.75) {$f(x)$};
+			
+			\draw[draw=red,fill=white] (2.25,1.15) circle [radius=2pt];
+			
+			\draw (2.25,-0.1) -- (2.25,0.1) node[below=2mm] {$2$};
+			\draw (-0.1,1.15) -- (0.1,1.15) node[left=2mm] {$4$};
+			\draw[dashed] (0,1.15) -- (2.2,1.15);
+			\draw[dashed] (2.25,0) -- (2.25,1.1);
+			
+			\draw (1,-0.1) -- (1,0.1) node[below=2mm] {$1$};
+			\draw (3.5,-0.1) -- (3.5,0.1) node[below=2mm] {$3$};
+			\draw (4.75,-0.1) -- (4.75,0.1) node[below=2mm] {$4$};
+			
+			\draw (-0.1,0.5) -- (0.1,0.5) node[left=2mm] {$2$};
+			\draw (-0.1,1.8) -- (0.1,1.8) node[left=2mm] {$6$};
+			\draw (-0.1,2.45) -- (0.1,2.45) node[left=2mm] {$8$};
+			
+			\draw[thick,->] (1.2,2.2) .. controls(1.55,1.8) .. (2.1,1.4);
+			\draw[thick,<-] (2.5,1.2) .. controls(3,1) .. (3.8,0.8);
+		\end{tikzpicture}
+	\end{center}
+	First, notice that there is a rather large open dot at $ x=2 $. This is there to remind us that the function (and hence the graph) doesn't exist at $ x=2 $. As we were plugging in values of $ x $ into the function we are in effect moving along the graph in towards the point as $ x=2 $. This is shown in the graph by the two arrows on the graph that are moving in towards the point.\\ \\
+	When we are computing limits the question that we are really asking is what $ y $ value is our graph approaching as we move in towards  on our graph. We are NOT asking what $ y $ value the graph takes at the point in question. In other words, we are asking what the graph is doing around the point $ x=a $. In our case we can see that as $ x $ moves in towards 2 (from both sides) the function is approaching $ y=4 $ even though the function itself doesn't even exist at $ x=2 $. Therefore we can say that the limit is in fact 4.
+	
+	\section{One Sided Limits}
+	
+	As the name implies, with one-sided limits we will only be looking at one side of the point in question. Here are the definitions for the two one sided limits.\\ \\
+	\textbf{Right-Sided Limit}\\
+	We say
+	\[ \lim\limits_{x\to a^+} f(x) = L \]
+	provided we can make $ f(x) $ as close to $ L $ as we want for all $ x $ sufficiently close to $ a $ and $ x>a $ without actually letting $ x $ be $ a $.
+
+	\noindent \textbf{Left-Sided Limit}\\
+	We say
+	\[ \lim\limits_{x\to a^-} f(x) = L \]
+	provided we can make $ f(x) $ as close to $ L $ as we want for all $ x $ sufficiently close to $ a $ and $ x<a $ without actually letting $ x $ be $ a $.	\\ \\
+	Note that one-sided limits do not care about what's happening at the point any more than normal limits do. They are still only concerned with what is going on around the point. The only real difference between one-sided limits and normal limits is the range of $ x $'s that we look at when determining the value of the limit. The relationship between one-sided limits and normal limits can be summarized by the following fact.\\ \\
+	\textbf{Fact}\\
+	Given a function $ f(x) $ if,
+	\[ \lim\limits_{x\to a^+} f(x) = \lim\limits_{x\to a^-} f(x) = L \]
+	then the normal limit will exist and 
+	\[ \lim\limits_{x\to a} f(x) = L \]
+	Likewise, if
+	\[ \lim\limits_{x\to a} f(x) = L \]
+	then,
+	\[ \lim\limits_{x\to a^+} f(x) = \lim\limits_{x\to a^-} f(x) = L \]
+	This fact can be turned around to also say that if the two one-sided limits have different values, \textit{i.e.},
+	\[ \lim\limits_{x\to a^+} f(x) \neq \lim\limits_{x\to a^-} f(x) \]
+	then the normal limit will not exist.
+	
+	
+	\section{Limit Properties}
+	
+	First we will assume that $ \lim\limits_{x\to a} f(x) $ and $ \lim\limits_{x\to a} g(x) $ exist and that $ c $ is any constant. Then,
+	\begin{enumerate}
+		\item $ \lim\limits_{x\to a} (c f(x)) = c \lim\limits_{x\to a} f(x) $.
+		
+		\item $ \lim\limits_{x\to a} (f(x) \pm g(x)) = \lim\limits_{x\to a} f(x) \pm \lim\limits_{x\to a} g(x) $.
+		
+		\item $ \lim\limits_{x\to a} (f(x) g(x)) = \left( \lim\limits_{x\to a} f(x) \right) \left( \lim\limits_{x\to a} g(x) \right) $.
+		
+		\item $ \lim\limits_{x\to a} \left( \dfrac{f(x)}{g(x)} \right) = \dfrac{\lim\limits_{x\to a} f(x)}{\lim\limits_{x\to a} g(x)} $, provided $ \lim\limits_{x\to a} g(x) \neq 0 $.
+		
+		\item $ \lim\limits_{x\to a} (f(x))^n = \left( \lim\limits_{x\to a} f(x) \right)^n  $, $ n \in \R $.
+		
+		\item $ \lim\limits_{x\to a} \left( \sqrt[n]{f(x)} \right) = \sqrt[n]{\lim\limits_{x\to a} f(x)} $.
+		
+		\item $ \lim\limits_{x\to a} c = c $.
+		
+		\item $ \lim\limits_{x\to a} x = a $.
+		
+		\item $ \lim\limits_{x\to a} x^n = a^n $.
+	\end{enumerate}
+	Note that all these properties also hold for the two one-sided limits as well we just didn't write them down with one sided limits to save on space.
+	
+	\section{Computing Limits}
+	
+	
+	\textbf{Example}. Evaluate the following limit
+	\[ \lim\limits_{x \to 2} \frac{x^2+4x-12}{x^2-2x} \]
+	\textit{Solution}. First let's notice what happens when we plug in $ x=2 $.
+	\[ \lim\limits_{x \to 2} \frac{2^2 + 4(2) - 12}{2^2 - 2(2)} = \frac{0}{0} \]
+	So we can't just plug in $ x=2 $ to evaluate the limit. So, we're going to have to do something else. The first thing that we should always do when evaluating limits is to simplify the function as much as possible. In this case that means factoring both the numerator and denominator. Doing this gives,
+	\[ \lim\limits_{x \to 2} \frac{x^2+4x-12}{x^2-2x} = \lim\limits_{x \to 2} \frac{(x-2)(x+6)}{x(x-2)} = \lim\limits_{x \to 2} \frac{x+6}{x} \]
+	So, upon factoring we saw that we could cancel an $ x-2 $ from both the numerator and the denominator. Upon doing this we now have a new rational expression that we can plug $ x=2 $ into because we lost the division by zero problem. Therefore, the limit is,
+	\[ \lim\limits_{x \to 2} \frac{x^2+4x-12}{x^2-2x} = \lim\limits_{x \to 2} \frac{x+6}{x} = \frac{8}{2} = 4 \]
+	Note that this is in fact what we guessed the limit to be in the previous sections.\\ \\
+	On a side note, the 0/0 we initially got in the previous example is called an \textit{indeterminate form}. This means that we don't really know what it will be until we do some more work. Typically zero in the denominator means it's undefined. However that will only be true if the numerator isn't also zero. Also, zero in the numerator usually means that the fraction is zero, unless the denominator is also zero. Likewise anything divided by itself is 1, unless we're talking about zero.
+	
+	\section{Infinite Limits}
+	
+	In this section we will take a look at limits whose value is infinity or minus infinity.\\ \\
+	\textbf{Definition}\\
+	We say
+	\[ \lim\limits_{x\to a} f(x) = \infty \]
+	if we can make $ f(x) $ arbitrarily large for all $ x $ sufficiently close to $ x=a $, from both sides, without actually letting $ x=a $.\\ \\
+	We say
+	\[ \lim\limits_{x\to a} f(x) = -\infty \]
+	if we can make $ f(x) $ arbitrarily large and negative for all $ x $ sufficiently close to $ x=a $, from both sides, without actually letting $ x=a $.\\ \\ 
+	\textbf{Definition}\\
+	The function $ f(x) $ will have a vertical asymptote at $ x=a $ if we have one of the following limits at $ x=a $,
+	\[ \lim\limits_{x\to a^+} f(x) = \pm \infty \qquad \lim\limits_{x\to a^-} f(x) = \pm \infty \qquad \lim\limits_{x\to a} f(x) = \pm \infty  \]
+	Note that it only requires one of the above limits for a function to have a vertical asymptote at $ x=a $.
+	
+	
+	\section{Limits at Infinity}
+	
+	In the previous section we saw limits that were infinity and it’s now time to take a look at limits at infinity.  By limits at infinity we mean one of the following two limits.
+	\[ \lim\limits_{x\to \infty} f(x) \qquad \lim\limits_{x\to -\infty} f(x) \]
+	In other words, we are going to be looking at what happens to a function if we let $ x $ get very large in either the positive or negative sense. Also, as we'll soon see, these limits may also have infinity as a value. In fact, many of the limits that we’re going to be looking at we will need the following two facts.
+	\begin{enumerate}
+		\item If $ r $ is a positive number and $ c $ is any real number then,
+			\[ \lim\limits_{x\to \infty} \frac{c}{x^r} = 0 \]
+		\item If $ r $ is a positive number, $ c $ is any real number, and $ x^r $ is defined for $ x<0 $ then,
+			\[ \lim\limits_{x\to -\infty} \frac{c}{x^r} = 0 \]
+	\end{enumerate}
+	The first part of this fact should make sense if you think about it. Because we are requiring  we know that $ x^r $ will stay in the denominator. Next as we increase $ x $ then $ x^r $ will also increase. So, we have a constant divided by an increasingly large number and so the result will be increasingly small. Or, in the limit we will get zero.\\ \\
+	The second part is nearly identical except we need to worry about $ x^r $ being defined for negative $ x $. This condition is here to avoid cases such as $ r = \frac{1}{2} $. If this $ r $ were allowed then we'd be taking the square root of negative numbers which would be complex and we want to avoid that at this level.
+	
+	\section{Continuity}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	\addcontentsline{toc}{chapter}{}
+	\pagestyle{plain}
+	
+\end{document}

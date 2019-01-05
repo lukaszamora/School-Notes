@@ -1,0 +1,201 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb}
+\usepackage{esint}
+
+\theoremstyle{definition}
+
+\newenvironment{amatrix}[1]{%
+	\left[\begin{array}{@{}*{#1}{r}|c@{}}
+	}{%
+	\end{array}\right]
+}
+
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 7}
+\lhead{MATH 323}
+\cfoot{\thepage}
+
+\title{MATH 323 - Homework 7}
+\author{Lukas Zamora}
+\date{October 30, 2018}
+
+\setlength\parindent{0pt}
+
+
+\begin{document}
+
+    \maketitle
+    	
+    \begin{prob}{5} $  $
+    	\begin{enumerate}[label=\alph*.)]
+    		\item 
+    			\[
+    				A = \begin{bmatrix} 3 & 4 & -1 & 2 \\ 6 & 4 & -10 & 13 \\ 3 & 2 & -5 & 7 \\ 6 & 7 & -4 & 2 \end{bmatrix} \longrightarrow \begin{bmatrix} 1 & 0 & -3 & 0 \\ 0 & 1 & 2 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{bmatrix}
+    			\]
+    			So $ \text{span}(S) = \left\{ \alpha(x^3-3x) + \beta(x^2+2x) + \gamma \, | \, \alpha, \beta, \gamma \in \mathbb{R} \right\} $. But every vector in $ \mathcal{P}_3 $ cannot be expressed as $ \alpha x^3 + \beta x^2 - (3\alpha + 2\beta)x + \gamma $. Thus $ \text{span}(S) \neq \mathcal{P}_3 $.
+    			
+    		\item From part (a), the row reduced form of $ A $ yields 3 nonzero rows, thus a basis $ B $ for $ \text{span}(S) $ is 
+    		\[ B = \left\{ x^3-3x, x^2+2x, 1 \right\} \]
+    		and $ \dim(\text{span}(S)) = |B| = 3 $.\\
+    	\end{enumerate}
+    \end{prob}
+
+	\begin{prob}{10} $  $
+		\begin{proof}
+			Let $ S = \{ \mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n \} $ be a finite subset of a vector space $ \mathcal{V} $ and $ \mathbf{v} \in \text{span}(S) $, with $ \mathbf{v} \neq \text{span}(S) $. Since $ \mathbf{v} \in T $, it can be written as $ \mathbf{v} = 1 \cdot \mathbf{v} $. Since $ \mathbf{v} \in \text{span}(S) $, $ \mathbf{v} $ can also be written as $ \mathbf{v} = \sum_{i=1}^{n} a_i \mathbf{v}_i $, $ a_i \in \mathbb{R} $. So there are two different ways to write $ \mathbf{v} $.
+		\end{proof}
+	\end{prob}
+    
+    \begin{prob}{19} $  $
+    	\begin{align*}
+    		\mathbf{p} &= ax^4 + bx^3 + (3a-2b)x^2 + cx + (a-b+3c) \\
+    		&= ax^4 + bx^3 + 3ax^2 - 2bx^2 + cx + a - b + 3c \\
+    		&= a(x^4 + 3x^2 + 1) + b(x^3 - 2x^2 - 1) + c(x+3)
+    	\end{align*}
+    	So $ \text{span}(S) = \{ x^4+3x^2+1, x^3-2x^2-1, x+3 \} $. Let $ A $ be a matrix of the coefficients in $ \text{span}(S) $,
+    	\[
+    		A = \begin{bmatrix} 1 & 0 & 3 & 0 & 1 \\ 0 & 1 & -2 & 0 & -1 \\ 0 & 0 & 0 & 1 & 3 \end{bmatrix}
+    	\]
+    	Reducing $ A $ to its reduced row echelon form, we obtain a basis $ B $ for $ \text{span}(S) $,
+    	\[
+    		A = \begin{bmatrix} 1 & 0 & 3 & 0 & 1 \\ 0 & 1 & -2 & 0 & -1 \\ 0 & 0 & 0 & 1 & 3 \end{bmatrix} \longrightarrow \begin{bmatrix} 1 & 0 & 3 & 1 \\ 0 & 1 & -2 & -1 \\ 0 & 0 & 0 & 3 \end{bmatrix}
+    	\]
+    	So $ B = \{ x^4+3x^2+1, x^3-2x^2-1,x+3 \} $.\\
+    \end{prob}
+    
+    
+    \begin{prob}{20b} $  $
+    	\begin{align*}
+    		B =
+    			\begin{amatrix}{3}
+    				5 & -9 & 6 & -16 \\
+    				-1 & 3 & -1 & 5 \\
+    				3 & -3 & 4 & -6 \\
+    				1 & 2 & 1 & -3
+    			\end{amatrix}
+    		&\longrightarrow
+    			\begin{amatrix}{3}
+    				1 & -2 & 1 & -3 \\
+    				-1 & 3 & -1 & 5 \\
+    				3 & -3 & 4 & -6 \\
+    				5 & -9 & 6 & -16
+    			\end{amatrix} \\
+    		&\longrightarrow
+    			\begin{amatrix}{3}
+    				1 & -2 & 1 & -3 \\
+    				0 & 1 & 0 & 2 \\
+    				0 & 3 & 1 & 3 \\
+    				0 & 1 & 1 & -1
+    			\end{amatrix} \\
+    		&\longrightarrow
+    			\begin{amatrix}{3}
+    				1 & 0 & 0 & 4 \\
+    				0 & 1 & 0 & 2 \\
+    				0 & 0 & 1 & -3 \\
+    				0 & 0 & 0 & 0
+    			\end{amatrix}
+    	\end{align*}
+    	Thus $ [\mathbf{v}]_B = [4,2,-3] $.\\
+    \end{prob}
+    
+    
+    \begin{prob}{22} $  $
+    	\begin{enumerate}[label=\alph*.)]
+    		\item $ \mathbf{P} $ from $ B $ to $ C $.
+    			\[
+					\left[
+						\begin{array}{cccc|cccc}
+							5 & 6 & 4 & 3 & 10 & 4 & 15 & 18 \\
+							5 & -2 & 7 & 4 & 5 & -3 & 10 & 9 \\
+							4 & 5 & -1 & 6 & 4 & 7 & 8 & 10 \\
+							3 & 0 & 3 & 2 & 3 & -1 & 6 & 5
+						\end{array}
+					\right]
+					\longrightarrow
+					\left[
+						\begin{array}{cccc|cccc}
+							1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+							0 & 1 & 0 & 0 & 1 & 0 & 1 & 1 \\
+							0 & 0 & 1 & 0 & 1 & -1 & 1 & 1 \\
+							0 & 0 & 0 & 1 & 0 & 1 & 0 & 1
+						\end{array}
+					\right]
+    			\]
+    			Thus $ \mathbf{P} = \begin{bmatrix} 0 & 0 & 1 & 0 \\ 1 & 0 & 1 & 1 \\ 1 & -1 & 1 & 1 \\ 0 & 1 & 0 & 1 \end{bmatrix} $.\\
+    			
+    		\item $ \mathbf{Q} $ from $ C $ to $ D $.
+    			\[
+    				\left[
+    					\begin{array}{cccc|cccc}
+    						3 & 2 & 3 & 2 & 5 & 6 & 4 & 8 \\
+    						-1 & 6 & -1 & 1 & 5 & -2 & 7 & 4 \\
+    						2 & 1 & 3 & -2 & 4 & 5 & -1 & 6 \\
+    						-1 & 2 & 1 & 1 & 3 & 0 & 3 & 2
+    					\end{array}
+    				\right]
+    				\longrightarrow
+    				\left[
+    					\begin{array}{cccc|cccc}
+    						1 & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\
+    						0 & 1 & 0 & 0 & 1 & 0 & 1 & 1 \\
+    						0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 \\
+    						0 & 0 & 0 & 1 & 0 & 0 & 1 & 0
+    					\end{array}
+    				\right]
+    			\]
+    			Thus $ \mathbf{Q} = \begin{bmatrix} 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{bmatrix} $.\\
+    			
+    		\item $ \mathbf{R} $ from $ B $ to $ D $ $ = \mathbf{QP} $.
+    			\[
+    				\left[
+    					\begin{array}{cccc|cccc}
+    						3 & 2 & 3 & 2 & 10 & 4 & 15 & 18 \\
+    						-1 & 6 & -1 & 1 & 5 & -3 & 10 & 9 \\
+    						2 & 1 & 3 & -2 & 4 & 7 & 8 & 10 \\
+    						-1 & 2 & 1 & 1 & 3 & -1 & 6 & 3
+    					\end{array}
+    				\right]
+    				\longrightarrow
+    				\left[
+    					\begin{array}{cccc|cccc}
+    						1 & 0 & 0 & 0 & 1 & 1 & 1 & 2 \\
+    						0 & 1 & 0 & 0 & 1 & 0 & 2 & 2 \\
+    						0 & 0 & 1 & 0 & 1 & 1 & 2 & 2 \\
+    						0 & 0 & 0 & 1 & 1 & -1 & 1 & 1
+    					\end{array}
+    				\right]
+    			\]
+    			So $ \mathbf{R} = \begin{bmatrix} 1 & 1 & 1 & 2 \\ 1 & 0 & 2 & 2 \\ 1 & 1 & 2 & 2 \\ 1 & -1 & 1 & 1 \end{bmatrix} $.
+    			\[
+    				\mathbf{QP} = \begin{bmatrix} 0 & 1 & 0 & 1 \\ 1 & 0 & 1 & 1 \\ 1 & 1 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{bmatrix} \cdot \begin{bmatrix} 0 & 0 & 1 & 0 \\ 1 & 0 & 1 & 1 \\ 1 & -1 & 1 & 1 \\ 0 & 1 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 1 & 1 & 2 \\ 1 & 0 & 2 & 2 \\ 1 & 1 & 2 & 2 \\ 1 & -1 & 1 & 1 \end{bmatrix} = \mathbf{R}
+    			\]
+    	\end{enumerate}
+    \end{prob}
+    
+    
+    
+    
+    
+    
+    
+\end{document}

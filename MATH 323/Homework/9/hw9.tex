@@ -1,0 +1,118 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb}
+\usepackage{esint}
+
+\theoremstyle{definition}
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\DeclareMathOperator{\Sp}{span}
+\DeclareMathOperator{\proj}{proj}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 9}
+\lhead{MATH 323}
+\cfoot{\thepage}
+
+\title{MATH 323 - Homework 9}
+\author{Lukas Zamora}
+\date{November 29, 2018}
+
+\setlength\parindent{0pt}
+
+\def\u{\mathbf{u}}
+\def\v{\mathbf{v}}
+\def\w{\mathbf{w}}
+\def\A{\mathbf{A}}
+\def\I{\mathbf{I}}
+\def\0{\mathbf{0}}
+\def\W{\mathcal{W}}
+\def\R{\mathbb{R}}
+
+
+\begin{document}
+
+    \maketitle
+    	
+    \begin{prob}{6.1.10} $  $
+        \begin{proof}
+            Let $\W$ be the subspace spanned by $\{ \u_1, \u_2, \dots, \u_n \}$. By expanding the basis, we have $\W=\{ \u_1, \u_2, \dots, \u_k, \u_{k+1}, \dots, \u_n \}$. Since $\v \in \R^n$, by Theorem 6.3, we have
+            \[
+                \v \cdot \v = (\v \cdot \u_1)(\v \cdot \u_1) + (\v \cdot \u_2)(\v \cdot \u_2) + \dots + (\v \cdot \u_k)(\v \cdot \u_k) + (\v \cdot \u_{k+1})(\v \cdot \u_{k+1}) + \dots + (\v \cdot \u_n)(\v \cdot \u_n)
+            \]
+            or
+            \begin{align*}
+                ||\v||^2 &= (\v \cdot \u_1)^2 + (\v \cdot \u_2)^2 + \dots + (\v \cdot \u_k)^2 + (\v \cdot \u_{k+1})^2 + \dots + (\v \cdot \u_n)^2 \\
+                &= \left[(\v \cdot \u_1)^2 + (\v \cdot \u_2)^2 + \dots + (\v \cdot \u_k)^2 \right] + \left[(\v \cdot \u_{k+1})^2 + \dots + (\v \cdot \u_n)^2 \right] \\
+                &\geq (\v \cdot \u_1)^2 + \dots + (\v \cdot \u_n)^2
+            \end{align*}
+        \end{proof}
+    \end{prob}
+
+    \begin{prob}{6.1.12} $ $
+        \begin{proof}
+            Suppose $\A$ is symmetric, i.e. $\A = \A^T$. Since $\A^2 = \I_{n}$, we have $\A = \A^{-1}$. Then $\A^T = (\A^{-1})^T = (\A^T)^{-1} = \A^{-1}$. The fact that $\A^T = \A^{-1}$ imples that $\A$ is orthogonal.\\
+            Suppose $\A$ is orthogonal, i.e $\A^T = \A^{-1}$. Since $\A = \A^{-1}$, we have $\A^T = \A$, thus $\A$ is symmetric. 
+        \end{proof}
+        $ $
+    \end{prob}
+
+    \begin{prob}{6.2.12} $ $
+        \begin{proof}
+            Consider the orthogonal basis of $\W$ is $\{ \u_1, \u_2, \dots, \u_k \}$. Then consider the orthogonal subset of $\W_1$ and $\W_2$ such that $\W_{1} \subseteq \W_{2}$, where $\W_{1} = \{ \u_1, \u_2, \dots, \u_k \}$ and $\W_{2} = \{ \u_1, \u_2, \dots, \u_{k+1}, \dots, \u_m \}$. We then have $\W_1^{\perp} = \Sp \{ \u_{k+1}, \u_{k+2}, \dots, \u_n \}$ and similarly, $\W_{2}^{\perp} = \Sp \{ \u_{m+1}, \u_{m+2}, \dots, \u_n \} $. Thus $\W_{2}^{\perp} \subseteq \W_1^{\perp} $.
+        \end{proof}
+        $ $
+    \end{prob}
+
+    \begin{prob}{6.2.13} $ $
+        \begin{enumerate}[label=\alph*.)]
+            \item Consider the orthogonal basis of $\W$ as $\{ \v_1, \v_2, \dots, \v_k \}$. Let $\v = a_{1}\v_{1} + a_{2}\v_{2} + \dots + a_{n}\v_{n}$ for some $a_{1}, \dots, a_{n} \in \R$. Thus 
+            \begin{align*}
+                \proj_{\W} \v &= (\v \cdot \v_1) \v_1 + (\v \cdot \v_2) \v_2 + \dots + (\v \cdot \v_k) \v_k \\
+                &= ((a_{1}\v_{1} + a_{2}\v_{2} + \dots + a_{n}\v_{n}) \cdot \v_1) \v_1 + ((a_{1}\v_{1} + a_{2}\v_{2} + \dots + a_{n}\v_{n}) \cdot \v_2) \v_2 + \\
+                &\hspace{0.5cm}\dots + ((a_{1}\v_{1} + a_{2}\v_{2} + \dots + a_{n}\v_{n}) \cdot \v_k) \v_k \\
+                &= a_1\v_1 + a_2\v_2 + \dots a_k\v_k \\
+                &= \v
+            \end{align*}
+            Thus if $\v \in \W$, then $\proj _{\W} \v = \v$.
+
+            \item Suppose $\v \in \W^{\perp}$ and $\v = a_{k+1}\v_{k+1} + a_{k+2}\v_{k+2} \dots + a_{n}\v_{n}$, for some $a_{1}, \dots , a_{n} \in \R$. Then 
+            \begin{align*}
+                \proj_{\W} \v &= (\v \cdot \v_1)\v_1 + (\v \cdot \v_2)\v_2 + \dots + (\v \cdot \v_k)\v_k \\
+                &= ((a_{k+1}\v_{k+1} + a_{k+2}\v_{k+2} + \dots + a_n\v_n) \cdot \v_1) \v_1 + \\
+                &\hspace{0.5cm} ((a_{k+1}\v_{k+1} + a_{k+2}\v_{k+2} + \dots + a_n\v_n) \cdot \v_2) \v_2 + \dots  \\
+                &\hspace{0.5cm} ((a_{k+1}\v_{k+1} + a_{k+2}\v_{k+2} + \dots + a_n\v_n) \cdot \v_k) \v_k \\
+                &= (a_{k+1}\v_{k+1} \cdot \v_1) \v_1 + (a_{k+2}\v_{k+2} \cdot \v_1) \v_1 + \dots + (a_{n}\v_{n} \cdot \v_1) \v_1 + \dots \\
+                &\hspace{0.5cm} + (a_{k+1}\v_{k+1} \cdot \v_k) \v_k + (a_{k+2}\v_{k+2} \cdot \v_k) \v_k + \dots + (a_{n}\v_{n} \cdot \v_k) \v_k \\
+                &= 0
+            \end{align*}
+            Thus if $\v \in \W^{\perp}$, then $\proj_{\W} \v = 0$.
+        \end{enumerate}
+        $ $
+    \end{prob}
+
+    \begin{prob}{6.2.21} $ $
+        \begin{proof}
+            Suppose $T(\v) = T(\w)$. We need to show that $\v=\w$. Since $T$ is linear, $T(\v-\w) = \0$. Also since $\v,\w \in (\ker L)^{\perp}$ and, by definition, $T(\v-\w) = L(\v-\w)$, then $\v-\w \in \ker L$. So $\v-\w \in \ker L \, \cap \, (\ker L)^{\perp}$. Using Theorem 6.10, we know that $\ker L \; \cap \; (\ker L)^{\perp} = \{ \0 \}$, thus $\v - \w = \0 \Rightarrow \v = \w$. Hence $T$ is one-to-one.
+        \end{proof}
+    \end{prob}
+	
+    
+    
+\end{document}

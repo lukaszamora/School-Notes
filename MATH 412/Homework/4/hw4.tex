@@ -1,0 +1,238 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,mathtools}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+	\newenvironment{#1}[1]
+	{%
+		\renewcommand\customgenericname{#2}%
+		\renewcommand\theinnercustomgeneric{##1}%
+		\innercustomgeneric
+	}
+	{\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{}
+\chead{Homework 4}
+\lhead{MATH 412}
+\cfoot{\thepage}
+
+\title{MATH 412 - Homework 4}
+\author{Lukas Zamora}
+\date{September 28, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{3.2.1a} $  $ \vspace{1mm} \\
+    	$ f(x) = 1 $
+    	\begin{center}
+    		\begin{tikzpicture}
+    			\draw(-3,0) -- (3,0) node[right] {$x$};
+    			\draw (0,-2) -- (0,2);
+    			\draw[blue] (-2,1) -- (2,1);
+    			\draw(-2,0.1) -- (-2,-0.1) node[below] {$-L$};
+    			\draw(2,0.1) -- (2,-0.1) node[below] {$L$};
+    		\end{tikzpicture}
+    	\end{center}
+    The graph of the function $ f(x) $ and its Fourier series are the same.
+    \end{prob}
+
+	\begin{prob}{3.2.1c} $  $ \vspace{1mm} \\
+		$ f(x) = 1+x $
+		\begin{center}
+			\begin{tikzpicture}
+				\draw(-5,0) -- (5,0) node[right] {$x$};
+				\draw (0,-2.25) -- (0,2.25);
+				
+				\draw[blue] (-1,-1.5) -- (1,1.5);
+				\draw(-1,0.1) -- (-1,-0.1) node[below] {$-L$};
+				\draw(1,0.1) -- (1,-0.1) node[below] {$L$};
+				
+				\draw[blue] (-3,-1.5) -- (-1,1.5);
+				\draw(-3,0.1) -- (-3,-0.1) node[below] {$-2L$};
+				\draw(3,0.1) -- (3,-0.1) node[below] {$2L$};
+				\draw[blue] (1,-1.5) -- (3,1.5);
+				
+				\draw[blue] (-5,-1.5) -- (-3,1.5);
+				\draw(-4,0.1) -- (-4,-0.1) node[below] {$-3L$};
+				\draw(4,0.1) -- (4,-0.1) node[below] {$3L$};
+				\draw[blue] (3,-1.5) -- (5,1.5);
+			\end{tikzpicture}
+		\end{center}
+	The Fourier series of $ f(x) $ crosses the $ x $-axis at odd values of $ L $.
+	\end{prob}
+
+	\begin{prob}{3.2.4} $  $ \vspace{1mm} \\
+		If $ f(x) $ is piecewise smooth then the Fourier series of $ f(x) $ converges to 
+		\[
+			\frac{f(L) + f(-L)}{2}
+		\]
+		on the endpoints.
+	\end{prob}
+
+
+	
+	\begin{prob}{3.3.4} $  $ \vspace{2mm} \\
+		$ f(x) = \sin\left( \dfrac{\pi x}{L} \right) $
+		\begin{center}
+			\begin{tikzpicture}
+				\draw(-5,0) -- (5,0) node[right] {$x$};
+				\draw (0,-2.25) -- (0,2.25);
+				
+				\draw[blue] (1.5,0) arc (0:180:1.5cm);
+				\draw(-1.5,0.1) -- (-1.5,-0.1) node[below] {$-L$};
+				\draw(1.5,0.1) -- (1.5,-0.1) node[below] {$L$};
+				
+				\draw[blue] (-1.5,0) arc (0:180:1.5cm);
+				\draw[blue] (4.5,0) arc (0:180:1.5cm);
+				\draw(-4.5,0.1) -- (-4.5,-0.1) node[below] {$-2L$};
+				\draw(4.5,0.1) -- (4.5,-0.1) node[below] {$2L$};
+
+			\end{tikzpicture}
+		\end{center}
+	\end{prob}
+
+	\begin{prob}{3.4.1} $  $ 
+		\begin{enumerate}[label=\alph*.)]
+			\item Using an elementary integral property,
+			\[
+				\int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx
+			\]
+			this holds for any $ c \in [a,b] $. So we have
+			\begin{align*}
+				\int_a^b u \frac{dv}{dx} \, dx &= \int_{a}^{c^-} u \frac{dv}{dx} \, dx + \int_{c^+}^{b} u \frac{dv}{dx} \, dx \\
+				&=  uv \bigg|_{a}^{c^{-}} - \int_{a}^{c^{-}} v \frac{du}{dx} \, dx + uv \bigg|_{c^{+}}^{b} - \int_{c^{+}}^{b} v \frac{du}{dx} \,dx \\
+				&= \boxed{ uv \bigg|_{a}^{b} - uv \bigg|_{c^{-}}^{c^{+}} + \int_{a}^{b} v \frac{du}{dx} \,dx }
+			\end{align*}
+			\item  If $ u $ and $ v $ are continuous at $ x=c $, then $ u(c^{-}) = u(c^{+}) $ and $ v(c^{-}) = v(c^{+}) $, thus
+			\[
+				\int_a^b u \frac{dv}{dx} \, dx = uv \bigg|_{a}^{b} - \int_a^b v \frac{du}{dx} \, dx
+			\]
+		\end{enumerate}
+	\end{prob}
+
+	
+
+	\begin{prob}{3.4.3} $  $
+		\begin{enumerate}[label=\alph*.)]
+			\item Using integration by parts and assuming $ \sin(n\pi x/L) $ is continuous everywhere,
+				\begin{align*}
+					b_n &= \frac{2}{L} \int_0^L f(x) \sin\left( \frac{n\pi x}{L} \right) \, dx \\
+					&= \frac{2}{L} \int_{0}^{x_0^-} \frac{df}{dx} \sin\left( \frac{n\pi x}{L} \right) \, dx + \frac{2}{L} \int_{x_0^+}^{L} \frac{df}{dx} \sin\left( \frac{n\pi x}{L} \right) \, dx \\
+					&= \frac{2}{L}\left[ f(x)\sin\left( \frac{n\pi x}{L} \right) \bigg|_{0}^{x_0^-} - \frac{n\pi}{L} \int_{0}^{x_0^-} f(x) \cos\left( \frac{\pi x}{L} \right) \, dx + f(x)\sin\left( \frac{n\pi x}{L} \right) \bigg|_{x_0^+}^{L} \right.\\
+					& \left. \qquad \quad  - \frac{n\pi}{L} \int_{x_0^+}^{L} f(x)\cos\left( \frac{n\pi x}{L} \right) \, dx \right] \\
+					&= \frac{2}{L} \left[ f(x)\sin\left( \frac{n\pi x}{L} \right) \bigg|_{0}^{x_0^-} + f(x)\sin\left( \frac{n\pi x}{L} \right) \bigg|_{x_0^+}^{L} - \frac{n\pi}{L} \int_{0}^{L} f(x)\cos\left( \frac{n\pi x}{L} \right) \, dx   \right] \\
+					&= \frac{2}{L} \left[ f(x_0^-)\sin\left( \frac{n\pi x_0^-}{L} \right) - f(x_0^+)\sin\left( \frac{n\pi x_0^+}{L} \right) - \frac{n\pi}{L} \int_{0}^{L} f(x)\cos\left( \frac{n\pi x}{L} \right) \, dx  \right] \\
+					&= \boxed{ \frac{2}{L} (\alpha - \beta) \sin\left( \frac{n\pi x_0}{L} \right) - \frac{n\pi}{L} a_n}
+				\end{align*}
+				
+			\item Using integration by parts and assuming $ \cos(n\pi x/L) $ is continuous everywhere,
+				\begin{align*}
+					a_n &= \frac{2}{L} \int_0^L f(x) \cos\left( \frac{n\pi x}{L} \right) \, dx \\
+					&= \frac{2}{L} \int_{0}^{x_0^-} \frac{df}{dx} \cos\left( \frac{n\pi x}{L} \right) \, dx + \frac{2}{L} \int_{x_0^+}^{L} \frac{df}{dx} \cos\left( \frac{n\pi x}{L} \right) \, dx \\
+					&= \frac{2}{L}\left[ f(x)\cos\left( \frac{n\pi x}{L} \right) \bigg|_{0}^{x_0^-} + \frac{n\pi}{L} \int_{0}^{x_0^-} f(x) \sin\left( \frac{\pi x}{L} \right) \, dx + f(x)\cos\left( \frac{n\pi x}{L} \right) \bigg|_{x_0^+}^{L} \right. \\
+					& \left. \qquad \quad  + \frac{n\pi}{L} \int_{x_0^+}^{L} f(x)\sin\left( \frac{n\pi x}{L} \right) \, dx \right] \\
+					&= \frac{2}{L} \left[ f(x)\cos\left( \frac{n\pi x}{L} \right) \bigg|_{0}^{x_0^-} + f(x)\cos\left( \frac{n\pi x}{L} \right) \bigg|_{x_0^+}^{L} + \frac{n\pi}{L} \int_0^L f(x) \sin\left( \frac{n\pi x}{L} \right) \, dx \right] \\
+					&= \frac{2}{L} \left[ f(x_0^-) \cos\left( \frac{n\pi x_0^-}{L} \right) - f(0) + (-1)^n f(L) + f(x_0^+) \cos\left( \frac{n\pi x_0^+}{L} \right) + \frac{n\pi}{L} \int_0^L f(x) \sin\left( \frac{n\pi x}{L} \right) \, dx \right] \\
+					&= \boxed{ \frac{2}{L} \left( (\alpha - \beta)\cos\left( \frac{n\pi x_0}{L} \right) - f(0) + (-1)^n f(L) + \frac{n\pi}{L}b_n  \right) }
+				\end{align*}
+		\end{enumerate}
+	\end{prob}
+
+	\begin{prob}{3.4.6} $  $ \vspace{1mm} \\
+		Start with the Fourier series of $ e^x $,
+		\[
+			e^x \sim A_0 + \sum\limits_{n=1}^{\infty} A_n \cos\left( \frac{n\pi x}{L} \right)
+		\]
+		The function $ e^x $ is continuous, so its Fourier series is also continuous and this can be differentiated term by term:
+		\begin{equation}\label{fourier1}
+			\frac{d}{dx} e^x \sim - \sum\limits_{n=1}^{\infty} \frac{n\pi}{L} A_n \sin\left( \frac{n\pi x}{L} \right)
+		\end{equation}
+		But this Fourier series is not continuous, since $ f(0) = 1 \neq 0 \neq e^L = f(L) $. So by equation 3.4.13 in the book,
+		\begin{equation}\label{fourier2}
+			\frac{d}{dx} e^x \sim \frac{e^L-1}{L} + \sum\limits_{n=1}^{\infty} \left( \frac{n\pi}{L} \left( -\frac{n\pi}{L} \right) A_n + \frac{2}{L} ((-1)^ne^L-1) \right) \cos\left( \frac{n\pi x}{L} \right)
+		\end{equation}
+		Equating (\ref{fourier1}) and (\ref{fourier2}),
+		\begin{align*}
+			\boxed{ A_0 = \frac{e^L-1}{L} } \qquad \qquad  A_n &= -\frac{n^2\pi^2}{L^2} A_n + \frac{2(-1)^n e^L-1}{n^2\pi^2 + L^2} \\
+			&\Rightarrow \boxed {A_n = \frac{2L(-1)^n e^L-1}{n^2\pi^2 + L^2}}
+		\end{align*}
+	\end{prob}
+	
+	
+    
+    
+    
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}The Zeta Function}{1}
+\contentsline {subsection}{\numberline {2.1}Euler's Relationship with $ \zeta (s) $}{3}
+\contentsline {subsection}{\numberline {2.2}Non-trivial Zeros}{5}
+\contentsline {subsection}{\numberline {2.3}Riemann's Hypothesis.}{5}
+\contentsline {section}{\numberline {3}Applications of the Riemann Hypothesis}{5}
+\contentsline {subsection}{\numberline {3.1}The Prime Number Theorem}{5}
+\contentsline {subsection}{\numberline {3.2}The Critical Line}{6}
+\contentsline {subsection}{\numberline {3.3}RSA Cryptography}{7}
+\contentsline {section}{\numberline {4}Conclusion}{7}
+\contentsline {section}{References}{9}
+\contentsline {section}{Appendix A: Figures and Tables}{10}

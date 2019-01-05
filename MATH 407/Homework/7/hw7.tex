@@ -1,0 +1,121 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb}
+\usepackage{esint}
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 7}
+\lhead{MATH 407}
+\cfoot{\thepage}
+
+\title{MATH 407 -- Homework 7}
+\author{Lukas Zamora}
+\date{October 25, 2018}
+
+\setlength\parindent{0pt}
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{5.31} $  $ \vspace{2mm} \\
+    	 The singularity $ z_0 = \pi/2 $ is inside $ C $, so using Cauchy's Integral Formula, the integral becomes
+		\[
+    		\oint_{|z|=5} \frac{\sin(3z)}{z+\pi/2} \, dz = 2\pi i \sin\left( -\frac{3\pi}{2} \right) = \boxed{2\pi i}
+    	\]
+    \end{prob}
+    
+    
+    \begin{prob}{5.33} $  $
+    	\begin{enumerate}[label=\alph*.)]
+    		\item Notice that 
+    			\[ f(z) = \frac{\cos(\pi z)}{z^2-1} = \frac{\cos(\pi z)}{(z+1)(z-1)} \]
+    			Both singularities occur inside the rectangle $ C $, so using Cauchy's Integral Formula, the integral becomes
+    			\begin{align*}
+    				\frac{1}{2\pi i} \oint_C \frac{\cos(\pi z)}{z^2-1} \, dz &= \frac{1}{2\pi i} \oint_C \frac{\cos(\pi z) / (z-1)}{z+1} \, dz + \frac{1}{2\pi i} \oint_C \frac{\cos(\pi z)/(z+1)}{z-1} \, dz \\
+    				&= \frac{\cos(\pi z)}{z-1} \Bigg|_{z=-1} + \frac{\cos(\pi z)}{z+1} \Bigg|_{z=1} \\
+    				&= \frac{\cos(-\pi)}{-2} + \frac{\cos(\pi)}{2} \\
+    				&= \frac{1}{2} - \frac{1}{2} = \boxed{0}
+    			\end{align*}
+    		
+    		\item The only singularity that occurs inside $ C $ is $ z_0 = 1 $. So, using Cauchy's Integral Formula, the integral becomes
+    			\[ \frac{1}{2\pi i} \oint_C \frac{\cos(\pi z)/(z-1)}{z+1} \, dz = \frac{\cos(\pi z)}{z-1} \Bigg|_{z=-1} = \frac{\cos(-\pi)}{-2} = \boxed{-\frac{1}{2}} \]
+    	\end{enumerate}
+    \end{prob}
+    
+    
+    
+    \begin{prob}{5.34} $  $ \vspace{2mm} \\
+    	First notice that 
+    	\[ f(z) = \frac{e^{zt}}{z^2+1} = \frac{e^{zt}}{(z+i)(z-i)} \]
+    	Both singularities occur inside $ C $, so by Cauchy's Integral Formula, the integral becomes
+    		\begin{align*}
+    			\frac{1}{2\pi i} \oint_C \frac{e^{zt}}{z^2+1} &= \frac{1}{2\pi i} \oint_C \frac{e^{zt}/(z+i)}{z-i} \, dz + \frac{1}{2\pi i} \oint_C \frac{e^{zt}/(z-i)}{z+i} \, dz \\
+    			&= \frac{e^{zt}}{z+i} \Bigg|_{z=i} + \frac{e^{zt}}{z-i} \Bigg|_{z=-i} \\
+    			&= \frac{e^{it}}{2i} - \frac{e^{-it}}{2i} = \boxed{\sin(t)}
+    		\end{align*}
+    \end{prob}
+    
+    
+    \begin{prob}{5.39} $  $ \vspace{2mm} \\
+    	First notice that 
+    	\[ f(z) = \frac{e^{zt}}{(z^2+1)^2} = \frac{e^{zt}}{(z+i)^2(z-i^2)} \]
+    	Both singularities occur inside $ C $, so using Cauchy's Integral Formula, the integral becomes
+    	\begin{align*}
+    		\frac{1}{2\pi i} \oint_C \frac{e^{zt}}{(z^2+1)^2} \, dz &= \frac{1}{2\pi i} \oint_C \frac{e^{zt}/(z+i)^2}{(z-i)^2} \, dz + \frac{1}{2\pi i} \oint_C \frac{e^{zt}/(z-i)^2}{(z+i)^2} \, dz \\
+    		&= \frac{d}{dz} \left( \frac{e^{zt}}{(z+i)^2} \right) \Bigg|_{z=i} + \frac{d}{dz} \left( \frac{e^{zt}}{(z-i)^2} \right) \Bigg|_{z=-i} \\
+    		&= \frac{e^{it}(2it-2)}{-8i} + \frac{e^{-it}(-2it-2)}{8i} \\
+    		&= \frac{e^{it}-e^{-it}}{4i} - \frac{te^{it}+te^{-it}}{4} \\
+    		&= \boxed{\frac{\sin(t) - t\cos(t)}{2}}
+    	\end{align*}
+    \end{prob}
+    
+    
+    \begin{prob}{5.39} $  $ \vspace{2mm} \\
+    	First note that $ |f(z)| = |z^2-3z+2| = \left| \left( z- \dfrac{3}{2} \right)^2 - \dfrac{1}{4} \right| $. From $ |z| \leq 1 $, we have 
+			\begin{align*}
+				-1 &\leq z \leq 1 \\
+				-\frac{5}{2} &\leq z - \frac{3}{2} \leq -\frac{1}{2} \\
+				\frac{25}{4} &\geq \left( z - \frac{3}{2} \right)^2 \geq \frac{1}{4} \\
+				6 &\geq \left( z - \frac{3}{2} \right)^2 - \frac{1}{4} \geq 0 \\
+				6 &\geq z^2-3z+2 \geq 0
+			\end{align*}
+			Thus the maximum of $ |f(z)| $ in $ |z| \leq 1 $ is 6.
+    \end{prob}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+\end{document}

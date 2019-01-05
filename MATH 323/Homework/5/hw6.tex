@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb}
+\usepackage{esint}
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 5}
+\lhead{MATH 323}
+\cfoot{\thepage}
+
+\title{MATH 323 - Homework 5}
+\author{Lukas Zamora}
+\date{October 16, 2018}
+
+\setlength\parindent{0pt}
+
+
+\begin{document}
+
+    \maketitle
+
+    \begin{prob}{4.1.6} $ $
+        \begin{proof}
+            Let $I$ be the $n\times n$ identity matrix. Both $I$ and $-I$ are invertible, but $I+(-I) = \mathbf{0}$, which is not invertible. Since the zero vector is not invertible, the set of $ n\times n $ invertible matrices is not a vector space.
+        \end{proof}
+    $  $
+    \end{prob}
+
+    \begin{prob}{4.2.5} $ $ \vspace{2mm} \\
+    	Setting $ a=b=c=0 $, we see that $ \mathbf{0} \in \mathcal{V} $. Thus $ \mathcal{V} $ is nonempty.\\
+    	
+        Let $ \mathbf{x_1}= \begin{pmatrix} 2a_1-3b_1 \\ a_1-5c_1 \\ a_1 \\ 4c_1-b_1 \\ c_1 \end{pmatrix}, \mathbf{x_2} = \begin{pmatrix} 2a_2-3b_2 \\ a_2-5c_2 \\ a_2 \\ 4c_2-b_2 \\ c_2 \end{pmatrix} \in \mathbb{R}^5 $. Then
+        \[
+            \mathbf{x_1} + \mathbf{x_2} = \begin{pmatrix} 2a_1-3b_1 \\ a_1-5c_1 \\ a_1 \\ 4c_1-b_1 \\ c_1 \end{pmatrix} + \begin{pmatrix} 2a_2-3b_2 \\ a_2-5c_2 \\ a_2 \\ 4c_2-b_2 \\ c_2 \end{pmatrix}
+            = \begin{pmatrix} 2a_1-3b_1 + 2a_2-3b_2 \\ a_1-5c_1 + a_2-5c_2 \\ a_1 + a_2 \\ 4c_1-b_1 + 4c_2-b_2 \\ c_1+c_2 \end{pmatrix}
+            = \begin{pmatrix} 2(a_1+a_2)-3(b_1 + b_2) \\ (a_1+a_2)-(5c_1+c_2) \\ a_1 + a_2 \\ 4(c_1+c_2)-(b_1+b_2) \\ c_1+c_2 \end{pmatrix} \in \mathbb{R}^5,
+        \]
+        since $a_1+a_2, b_1+b_2, c_1+c_2 \in \mathbb{R}$.\\
+        
+        Let $\alpha \in \mathbb{R}$, then
+        \[
+            \alpha \mathbf{x_1} = \alpha \begin{pmatrix} 2a_1-3b_1 \\ a_1-5c_1 \\ a_1 \\ 4c_1-b_1 \\ c_1 \end{pmatrix} = \begin{pmatrix} \alpha(2a_1-3b_1) \\ \alpha(a_1-5c_1) \\ \alpha(a_1) \\ \alpha(4c_1-b_1) \\ \alpha(c_1) \end{pmatrix} \in \mathbb{R}^5
+        \]
+        Since $\mathbf{x}$ is closed under vector addition and scalar multiplication, $\mathbf{x}$ is a subspace of $\mathbb{R}^5$.\\
+        
+    \end{prob}
+
+    \begin{prob}{4.2.18} $ $
+        \begin{proof}
+            Since $\mathcal{W}_1$ and $\mathcal{W}_2$ are subspaces, then $0 \in \mathcal{W}_1$ and $0 \in \mathcal{W}_2$. Thus $0 \in \mathcal{W}_1 \cap \mathcal{W}_2$. \\
+
+            Suppose that $\mathbf{x}, \mathbf{y} \in \mathcal{W}_1 \cap \mathcal{W}_2$. Then $\mathbf{x}$ is in both $\mathcal{W}_1$ and $\mathcal{W}_2$, and $\mathbf{y}$ is in both $\mathcal{W}_1$ and $\mathcal{W}_2$. Since $\mathcal{W}_1$ is a subspace of $\mathcal{V}$, then $\mathbf{x}+\mathbf{y} \in \mathcal{W}_1$. Similarly, since $\mathcal{W}_2$ is a subspace of $\mathcal{V}$, then $\mathbf{x}+\mathbf{y} \in \mathcal{W}_2$. Thus $\mathbf{x}+\mathbf{y} \in \mathcal{W}_1 \cap \mathcal{W}_2$.\\
+
+            Let $\mathbf{x} \in \mathcal{W}_1 \cap \mathcal{W}_2$, and $\alpha \in \mathbb{R}$. Since $\mathbf{x}$ is in both $\mathcal{W}_1$ and $\mathcal{W}_2$, and $\mathcal{W}_1$ and $\mathcal{W}_2$ are subspaces of $\mathcal{V}$, then both $\mathcal{W}_1$ and $\mathcal{W}_2$ are closed under scalar multiplication. Thus $\alpha \mathbf{x} \in \mathcal{W}_1$ and $\alpha \mathbf{x} \in \mathcal{W}_2$, which implies that $\alpha \mathbf{x} \in \mathcal{W}_1 \cap \mathcal{W}_2$.\\
+
+            Therefore $\mathcal{W}_1 \cap \mathcal{W}_2$ is a subspace of $\mathcal{V}$.
+        \end{proof}
+    \end{prob}
+
+	\begin{prob}{4.3.6} $  $
+		\begin{proof}
+			Let $ A = \begin{pmatrix} 1 & 3 & -1 \\ 2 & 7 & -3 \\ 4 & 8 & -7 \end{pmatrix} $. Using Gaussian elimination, 
+			\[
+				\begin{pmatrix} 1 & 3 & -1 \\ 2 & 7 & -3 \\ 4 & 8 & -7 \end{pmatrix} \to
+				\begin{pmatrix} 1 & 3 & -1 \\ 0 & 1 & -1 \\ 0 & -4 & -3 \end{pmatrix} \to
+				\begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & -1 \\ 0 & 0 & -7 \end{pmatrix} \to
+				\begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & -1 \\ 0 & 0 & 1 \end{pmatrix} \to
+				\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+			\]
+			Since $ \text{rank}(A) = 3 $, $ S $ spans $ \mathbb{R}^3 $.\\
+		\end{proof}
+	\end{prob}
+
+	\begin{prob}{4.3.16} $  $
+		\begin{proof}
+			$ \text{Span}(S_1) \subseteq \text{span}(S_2) $, since $ a_1\mathbf{v}_1 + \dots + a_n\mathbf{v}_n = (-a_1)(-\mathbf{v}_1) + \dots + (-a_n)(-\mathbf{v}_n) $, and $ \text{span}(S_2) \subseteq \text{span}(S_1) $, since $ a_1(-\mathbf{v}_1) + \dots + a_n(-\mathbf{v}_n) = (-a_1)\mathbf{v}_1 + \dots + (-a_n)\mathbf{v}_n $. Thus $ \text{span}(S_1) = \text{span}(S_2) $.
+		\end{proof}
+	\end{prob}
+
+
+
+
+
+
+\end{document}

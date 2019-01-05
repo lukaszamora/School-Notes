@@ -1,0 +1,122 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb}
+\usepackage{empheq}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 2}
+\lhead{MATH 412}
+\cfoot{\thepage}
+
+\title{MATH 407 - Homework 2}
+\author{Lukas Zamora}
+\date{September 13, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{2.53c} $  $ \vspace{1mm} \\
+    	Let $ z = x+iy $, then
+    	\begin{align*}
+    		f(z) & = \frac{1-z}{1+z} \\
+    		     & = \frac{1-(x+iy)}{1+(x+iy)} \\
+    		     & = \frac{(1-x) + iy}{(1+x) + iy} \cdot \frac{(1+x - iy)}{(1+x) - iy} \\
+    		     & = \frac{x^2 - 1 -i (y+yx) + i(y+yx) - y^2 - i2y}{(x+1)^2 - i(y+yx) + i(y+yx) - y^2} \\
+    		     & = \frac{(1 - x^2 - y^2) - i2y}{(1+x^2)^2 + y^2} \\
+    		     & = \frac{1-x^2-y^2}{(1+x^2)^2 + y^2} - i \frac{2y}{(1+x^2)^2 + y^2} \\
+    		     & \therefore \boxed{u(x,y) = \frac{1-x^2-y^2}{(1+x^2)^2 + y^2} \; , \; v(x,y) = \frac{-2y}{(1+x^2)^2 + y^2} }
+    	\end{align*}
+   	\end{prob}
+   
+   	\begin{prob}{2.58a} $  $
+   		\begin{proof}
+   			Let $ z_1 = a+ib, z_2 = c+id $. By the addition property, we have 
+   			\begin{align*}
+   				e^{z_1 + (-z_2)} & = e^{a+ib + (-c-id)} \\
+   								 & = e^{a+ib} e^{-c-id}
+   			\end{align*}
+   			Using the reciprocal property, we know that $ e^{-c-id} = 1/e^{c+id} $. Combining these, we obtain
+   			\[
+   				e^{a+ib} \left( \frac{1}{e^{c+id}} \right) = \frac{e^{a+ib}}{e^{c+id}}
+   			\]
+   		\end{proof}
+   	\end{prob}
+   
+   \begin{prob}{2.61b} $  $ \vspace{1mm} \\ 
+		 In polar form, $ i = e^{\pi i/2} $. We then have 
+		 \begin{align*}
+		 	e^{4z} & = e^{\pi i/2} \\
+		 	e^{4z} & = e^{(\pi/2 + 2k\pi)i} \\
+		 		4z & = \left( \frac{\pi}{2} + 2k\pi \right)i \\
+		 		   & \therefore \boxed{z = \left( \frac{\pi}{8} + \frac{\pi}{2}k \right)i \; , \; k = \pm 1, \pm 2, \dots }
+		 \end{align*}
+   \end{prob}
+
+	\begin{prob}{2.62b} $  $
+		\begin{proof}
+			We know that
+			\[
+				\cos(z) = \frac{e^{iz} + e^{-iz}}{2} \; , \; \sin(z) = \frac{e^{iz} - e^{-iz}}{2i}
+			\]
+			We then have 
+			\begin{align*}
+				\cos^2(z) - \sin^2(z) &= \left( \frac{e^{iz} + e^{-iz}}{2} \right)^2 + \left( \frac{e^{iz} - e^{-iz}}{2i} \right)^2 \\
+				&= \frac{1}{4} (e^{iz} + e^{-iz})^2 + \frac{1}{4}(e^{iz}-e^{-iz})^2 \\
+				&= \frac{1}{4} ( e^{2iz} + 2 + e^{-2iz} + e^{2iz} - 2 + e^{-2iz} ) \\
+				&= \frac{1}{2} (e^{2iz} + e^{-2iz} ) \\
+				&= \cos(2z)
+			\end{align*}
+		\end{proof}
+	\end{prob}
+
+	\begin{prob}{2.68d} $  $ \vspace{1mm} \\
+		Let $ z = x+iy $. We then have
+		\[
+			e^{2z} = e^{2(x+iy)} = e^{2x+i2y} = e^{2x} e^{i2y} = e^{2x} ( \cos(2y) + i\sin(2y) )
+		\]
+		and
+		\[
+			z^2 = (x+iy)^2 = (x^2-y^2) + i2xy
+		\]
+		Combining these, we get
+		\begin{align*}
+			z^2 e^{2z} &= ( (x^2-y^2) + i2xy )( e^{2x}\cos(2y) + ie^{2x}\sin(2y) ) \\
+			&= e^{2x} x^2 \cos(2y) + i x^2 e^{2x} \sin(2y) - y^2 e^{2x} \cos(2y) - i y^2 e^{2x} \sin(2y) + i 2xye^{2x}\cos(2y) - 2xye^{2x}\sin(2y) \\
+			&= e^{2x} ( x^2\cos(2y) - y^2\cos(2y) - 2xy\sin(2y) ) + ie^{2x} ( x^2\sin(2y) - y^2\sin(2y) + 2xy\cos(2y) ) \\
+			&= e^{2x} ( (x^2-y^2) \cos(2y) - 2xy\sin(2y) ) + i e^{2x}( 2xy\cos(2y) + (x^2-y^2)\sin(2y) )  
+		\end{align*} 
+		\begin{empheq}[box=\fbox]{align}
+			u(x,y) & = e^{2x} ( (x^2-y^2) \cos(2y) - 2xy\sin(2y) ) \nonumber \\
+			v(x,y) & = e^{2x}( 2xy\cos(2y) + (x^2-y^2)\sin(2y) ) \nonumber
+		\end{empheq}
+	\end{prob}
+    
+    
+\end{document}

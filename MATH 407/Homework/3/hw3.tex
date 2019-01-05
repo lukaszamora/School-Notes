@@ -1,0 +1,118 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,mathtools}
+\usepackage{empheq}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+% L-Hospitals rule thing
+\newcommand\myeq{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny L.H}}}{=}}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 3}
+\lhead{MATH 412}
+\cfoot{\thepage}
+
+\title{MATH 407 - Homework 3}
+\author{Lukas Zamora}
+\date{September 20, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{2.75c} $  $ \vspace{1mm} \\
+    	We know that $ \ln(z) = \ln|z| + i\arg(z) $ \\
+    	
+    	$ |z| = |\sqrt{3}-i| = \sqrt{4} = 2 $ \\ 
+    	
+    	$ \arg(z) = \arg(\sqrt{3}-i) = \dfrac{11\pi}{6} + 2\pi k $ \\
+    	
+    	$$ \therefore \boxed{ \ln(\sqrt{3} - i) = \ln(2) + i\left(\frac{11\pi}{6} + 2\pi k\right) \, , \,  \text{Ln}(\sqrt{3}-i) = \ln(2) + i\frac{11\pi}{6} } $$
+    \end{prob}
+
+	\begin{prob}{2.82a} $  $ \vspace{1mm} \\
+		Using the fact that for complex numbers $ z,w $, $ z^w = e^{w(\ln|z| + i\arg(z))} $,
+		\[
+			\ln(1-i) = \ln(\sqrt{2}) + i\left( \frac{7\pi}{4} + 2\pi k \right)
+		\]
+		Thus 
+		\begin{align*}
+			(1-i)^{1+i} &= e^{(1+i)(\ln(2) + i(7\pi/4 + 2\pi k))} \\
+			&= e^{\ln(\sqrt{2}) - 7\pi/4 - 2\pi k} e^{i(\ln(\sqrt{2}) + 7\pi/4 + 2\pi k)} \\
+			&= e^{\ln(\sqrt{2}) - 7\pi/4 - 2\pi k} \cos\left(\ln(\sqrt{2}) + \frac{7\pi}{4} \right) \\
+			&= \boxed{ e^{\frac{1}{2} \ln(2) - 7\pi/4 - 2\pi k} \cos\left(\frac{1}{2}\ln(2) + \frac{7\pi}{4} \right) }
+		\end{align*}
+	\end{prob}
+    
+    
+    \begin{prob}{2.95}
+    	\begin{align*}
+    		\lim\limits_{z \to e^{\pi i/3}} \left(z-e^{\pi i/3} \right) \left( \frac{z}{z^3+1} \right) &= \lim\limits_{z \to e^{\pi i/3}} \frac{z^2 - ze^{\pi i/3}}{z^3 + 1} \\
+    		&\myeq \lim\limits_{z \to e^{\pi i/3}} \frac{2z - e^{\pi i/3} }{3z^2} \\
+    		&= \frac{2e^{\pi i/3} - e^{\pi i/3}}{3\left( e^{\pi i/3} \right)^2} \\
+    		&= \frac{1}{3}e^{-\pi i/3} \\
+    		&= \frac{1}{3} \left( \cos\left( \frac{-\pi}{3} \right) + i\sin\left( \frac{-\pi}{3}\right) \right) \\
+    		&= \boxed{ \frac{1}{6} - i\frac{\sqrt{3}}{6} }
+    	\end{align*}
+    \end{prob}
+    
+    \begin{prob}{2.97} $  $
+    	\begin{proof}
+    		\begin{align*}
+    			\lim\limits_{h\to 0} \frac{f(z_0+h) - f(z_0)}{h} &= \lim\limits_{h\to 0} \frac{ \dfrac{2z_0 + 2h -1 }{3z_0 + 3h+2} - \dfrac{2z_0 - 1}{3z_0 + 2} }{h} \\
+    			&= \lim\limits_{h\to 0} \frac{(3z_0 + 2)(2z_0 + 2h - 1) - (2z_0 - 1)(3z_0 + 3h + 2)}{h(3z_0 + 2)(3z_0 + 3h + 2)} \\
+    			&= \lim\limits_{h\to 0} \frac{6z_0^2 + 4z_0 + 6hz_0 + 4h - 3z_0 - 2 - (6z_0^2 - 3z_0 + 6hz_0 - 3h + 4z_0 - 2)}{h(3z_0 + 2)(3z_0 + 3h + 2)} \\
+    			&= \lim\limits_{h\to 0} \frac{7h}{h(3z_0 + 2)(3z_0 + 3h + 2)} \\
+    			&= \lim\limits_{h\to 0} \frac{7}{(3z_0 + 2)(3z_0 + 3h + 2)} \\
+    			&= \frac{7}{(3z_0 + 2)^2} \; , \, z_0 \neq -2/3
+    		\end{align*}
+    	\end{proof}
+    \end{prob}
+
+	\begin{prob}{2.140} $  $
+		\begin{proof}
+			\begin{align*}
+				z &= (1-i)^{\sqrt{2}i} \\
+				  &= \left( \sqrt{2} e^{-\pi i/4 - 2\pi k i} \right)^{\sqrt{2}i} \\
+				  &= \sqrt{2}^{\sqrt{2}i} e^{\sqrt{2}(\pi /4 + 2\pi k)} \\
+				  &= e^{\sqrt{2}(\pi /4 + 2\pi k)} e^{i\sqrt{2}\ln(\sqrt{2})}
+			\end{align*}
+			At this point, we know that all of the values of $ z $ are fixed since the term $ e^{i\sqrt{2}\ln(\sqrt{2})} $ has a fixed angle of $ \sqrt{2}\ln(\sqrt{2}) $ radians. When we vary $ k $ we're varying the left factor. When we vary the magnitude and keep the direction constant, we generate points on a line through the origin. To find the line, we use the fact that $ \theta = \tan^{-1}(y/x) $, so the line happens to be 
+			\[
+				y = \tan(\sqrt{2}\ln(\sqrt{2})) x
+			\]
+		\end{proof}
+	\end{prob}
+    
+    
+    
+    
+\end{document}
+
+

@@ -1,0 +1,154 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,mathtools}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+	\newenvironment{#1}[1]
+	{%
+		\renewcommand\customgenericname{#2}%
+		\renewcommand\theinnercustomgeneric{##1}%
+		\innercustomgeneric
+	}
+	{\endinnercustomgeneric}
+}
+
+\newenvironment{amatrix}[1]{%
+	\left[\begin{array}{@{}*{#1}{c}|c@{}}
+	}{%
+	\end{array}\right]
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 4}
+\lhead{MATH 323}
+\cfoot{\thepage}
+
+\title{MATH 323 - Homework 4}
+\author{Lukas Zamora}
+\date{October 2, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{3.4.3f} $  $ \vspace{1mm} \\
+    	First we need to find the eigenvalues of $ A $:
+    		\begin{align*}
+    			\begin{vmatrix} 3-\lambda & 4 & 12 \\ 4 & -12-\lambda & 3 \\ 12 & 3 & -4-\lambda \end{vmatrix} &= (3-\lambda) \begin{vmatrix} -12-\lambda & 3 \\ 3 & -4-\lambda \end{vmatrix} -4 \begin{vmatrix} 4 & 4 \\ 12 & -4-\lambda \end{vmatrix} + 12 \begin{vmatrix} 4 & -12-\lambda \\ 12 & 3 \end{vmatrix} = 0 \\
+    			&= (3-\lambda)(\lambda^2 + 16\lambda + 39) -4(-4\lambda - 52) + 12(12\lambda + 156) = 0 \\
+    			&= -\lambda^3 - 13\lambda^2 + 169\lambda + 2197 = 0 \\
+    			&= -(\lambda + 13)^2 (\lambda-13) = 0
+    		\end{align*}
+    	The roots are $ \lambda = -13 $ with multiplicity 2, and $ \lambda = 13 $ with multiplicity 1.\\
+    		
+    	Eigenvector for $ \lambda=13 $: $ A-13I=0 $
+    		\begin{align*}
+    			\begin{amatrix}{3} 3-13 & 4 & 12 & 0 \\  4 & -12-13 & 3 & 0 \\ 12 & 3 & 4-13 & 0 \end{amatrix} = \begin{amatrix}{3} -10 & 4 & 12 & 0 \\  4 & -25 & 3 & 0 \\ 12 & 3 & -9 & 0 \end{amatrix} \xRightarrow{\text{rref}} \begin{amatrix}{3} 1 & 0 & 0 & 0 \\  0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \end{amatrix}
+    		\end{align*}
+    	So $ \vec{x} = \vec{0} $, thus
+    		\[
+    			E_{13} = \left\{ x_1 \begin{pmatrix} 1\\0\\0 \end{pmatrix} + x_2 \begin{pmatrix} 0\\1\\0 \end{pmatrix} + x_3 \begin{pmatrix} 0\\0\\1 \end{pmatrix} \Bigg| \, x_1,x_2,x_3 \in \mathbf{R} \right\}
+    		\]	
+    		
+    	Eigenvector for $ \lambda = -13 $: $ A+13I=0 $
+    		\begin{align*}
+    			\begin{amatrix}{3} 3+13 & 4 & 12 & 0 \\  4 & -12+13 & 3 & 0 \\ 12 & 3 & 4+13 & 0 \end{amatrix} = \begin{amatrix}{3} 16 & 4 & 12 & 0 \\  4 & 1 & 3 & 0 \\ 12 & 3 & 17 & 0 \end{amatrix} \xRightarrow{\text{rref}} \begin{amatrix}{3} 1 & 1/4 & 0 & 0 \\  0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{amatrix}
+    		\end{align*}
+    	So $ x_1 = -1/4x_2 $, $ x_3 = 0 $, $ x_2 = \text{free} $. Thus
+    		\[
+    			E_{-13} = \left\{ x_2 \begin{pmatrix} -1/4\\1\\0 \end{pmatrix} \Bigg| \, x_2 \in \mathbf{R} \right\}
+    		\]
+    \end{prob}
+
+	\begin{prob}{3.4.4e} $  $ \vspace{3mm} \\
+		$ A = \begin{bmatrix} -3 & 3 & -1 \\ 2 & 2 & 4 \\ 6 & 3 & 4 \end{bmatrix} $
+		
+		\begin{align*}
+			\begin{vmatrix} -3-\lambda & 3 & -1 \\ 2 & 2 - \lambda & 4 \\ 6 & 3 & 4-\lambda \end{vmatrix} &= -3-\lambda \begin{vmatrix} 2-\lambda & 4 \\ 3 & 4-\lambda \end{vmatrix} - 3 \begin{vmatrix} 2 & 4 \\ 6 & 4-\lambda \end{vmatrix} - \begin{vmatrix} 2 & 2-\lambda \\ 6 & 3 \end{vmatrix} = 0 \\
+			&= (-3-\lambda) (\lambda^2 - 6\lambda + 8 - 12) - 3(8-2\lambda - 24) - (6-12-6\lambda) = 0 \\
+			&= -3\lambda^2 - \lambda^3 + 18\lambda + 6\lambda^2 + 12 + 4\lambda - 24 + 6\lambda + 72 - 6 + 12 + 6\lambda = 0 \\
+			&= -\lambda^3 + 3\lambda^2 + 22\lambda + 66 = 0
+		\end{align*}
+	The roots to this equation are $ \lambda = 7.2728, \,  2.134+2.1239i, \,  2.134-2.1239i $. Since $ A $ only has 1 real eigenvalue/eigenvector, it is not diagonalizable, since the number of eigenvectors must equal $ \dim(A) $ for $ A $ to be diagonalizable.
+	\end{prob}    
+
+	\begin{prob}{3.4.6} $  $
+		\begin{proof}
+			Since $ A $ and $ B $ are similar, there exists an invertible matrix $ M \in \mathbf{R}^{n\times n} $ such that $ B = MAM^{-1} $. We then have 
+				\begin{align*}
+					p_B(x) &= \det(B-xI) \\
+					&= \det(MAM^{-1} - xI) \\
+					&= \det(MAM^{-1} - xMM^{-1}) \\
+					&= \det(M^{-1}(A-xI)M) \\
+					&= \det(M^{-1} M) \det(A-xI) \\
+					&= \det(A-xI) \\
+					&= p_A(x)
+				\end{align*}
+			Therefore $ p_A(x) = p_B(x) $.
+		\end{proof}
+	\end{prob}
+
+	\begin{prob}{3.4.11} $  $
+		\begin{proof}
+			First note that $ p_A(\frac{1}{x}) = \det(\frac{1}{x}I -A) = \det(I-Ax) $. We then have 
+				\begin{align*}
+					p_{A^{-1}}(x) &= \det(Ix-A^{-1}) \\
+					&= \det(AA^{-1}x - A^{-1}) \\
+					&= \det(A^{-1}(Ax-I)) \\
+					&= \det(A^{-1}) \det(Ax-I) \\
+					&= \det(A^{-1}) (-x)^n \det(I-Ax) \\
+					&= \det(A^{-1}) (-x)^n p_A\left( \frac{1}{x} \right)
+				\end{align*}
+		\end{proof}
+	\end{prob}
+
+	\begin{prob}{3.4.17} $  $
+		\begin{proof}
+			Assume $ A $ is singular. Then A has a nontrivial nullspace, so we can choose $ x $ such that $ Ax = 0 = 0x $, from which we see that $ x $ is an eigenvalue for $ \lambda = 0 $. The converse follows by a symmetric argument.
+		\end{proof}
+	\end{prob}
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+\end{document}

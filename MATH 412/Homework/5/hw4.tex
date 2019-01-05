@@ -1,0 +1,131 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,mathtools}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+	\newenvironment{#1}[1]
+	{%
+		\renewcommand\customgenericname{#2}%
+		\renewcommand\theinnercustomgeneric{##1}%
+		\innercustomgeneric
+	}
+	{\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 5}
+\lhead{MATH 412}
+\cfoot{\thepage}
+
+\title{MATH 412 - Homework 5}
+\author{Lukas Zamora}
+\date{October 12, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{4.4.3} $  $
+    	\[
+    		\rho_0 \frac{\partial^2 u}{\partial t^2} = T_0 \frac{\partial^2 u}{\partial x^2} - \beta \frac{\partial u}{\partial t}
+    	\]
+    	\begin{enumerate}[label=\alph*.)]
+    		\item In this equation, $ \frac{\partial u}{\partial t} $ represents the velocity of $ u(x,t) $. For a dampened vibration, the acceleration is opposite to the velocity, thus $ \beta > 0 $.
+    		\item Let $ u(x,t) = \phi(x) h(t) $. We then have 
+    		\[ \rho_0 \phi(x) h''(t) = T_0 \phi''(x) h(t) - \beta h'(t) = -\lambda \]
+    		or
+    		\[ \frac{\rho_0}{T_0} \frac{h''}{h} + \frac{\beta}{T_0} \frac{\phi''}{\phi} = -\lambda \]
+			Solving for $ \phi(x) $: 
+			\begin{align*}
+				&\phi'' = -\lambda \phi \qquad \phi(0) = \phi(L) = 0 \vspace{2mm}\\ 
+				&\phi = \sin\left( \frac{n\pi x}{L} \right) , \quad \lambda = \left(\frac{n\pi}{L}\right)^2
+			\end{align*}
+			Solving for $ h(t) $: \vspace{2mm} \\
+			Our characteristic equation looks like
+			\begin{align*}
+				& r^2 + \frac{\beta}{\rho_0}r + \frac{T_0}{\rho_0} \left( \frac{n\pi}{L} \right)^2 \\
+				& r = \frac{-\beta}{\rho_0} \pm \sqrt{ \left(\frac{\beta}{\rho_0}\right)^2 - 4\frac{T_0}{\rho_0} \frac{n^2\pi^2}{L^2} }
+			\end{align*}
+			Let $ \psi = \left(\dfrac{\beta}{\rho_0}\right)^2 - 4\dfrac{T_0}{\rho_0} \dfrac{n^2\pi^2}{L^2} = \dfrac{1}{\rho_0^2} \left( \beta^2 - \dfrac{4T_0\rho_0 n^2 \pi^2}{L^2} \right) $.\\
+			
+			Since  $ \beta^2 < \frac{4T_0\rho_0 n^2 \pi^2}{L^2} $, implies that $ \psi<0 $, we have two complex solutions:
+			\[ r_{1,2} = \frac{\frac{-\beta}{\rho_0} \pm \sqrt{\psi}}{2} = \frac{-\beta}{2\rho_0} \pm i \frac{\sqrt{-\psi}}{2} \]
+			We then have
+    	\end{enumerate}
+    \end{prob}
+	
+	
+    
+    
+    
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,271 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 2}
+\lhead{MATH 412}
+\cfoot{\thepage}
+
+\title{MATH 412 - Homework 2}
+\author{Lukas Zamora}
+\date{September 14, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{2.2.2} $  $ \\
+    	\begin{enumerate}[label=\alph*.)]
+    		\item $ L(u) = \dfrac{\partial}{\partial x} \left( K_0(x) \dfrac{\partial u}{\partial x} \right) = \dfrac{dK_0}{dx} \dfrac{\partial u}{\partial x} + K_0(x) \dfrac{\partial^2 u}{\partial x^2} $
+    		\begin{align*}
+    			L(c_1 u_1 + c_2 u_2) &= \frac{dK_0}{dx} \frac{\partial}{\partial x} (c_1 u_1 + c_2 u_2) + K_0(x) \frac{\partial^2}{\partial x^2} (c_1 u_1 + c_2 u_2) \\
+    			&= \frac{dK_0}{dx} \left( c_1 \frac{\partial u_1}{\partial x} + c_2 \frac{\partial u_2}{\partial x} \right) + K_0(x) \left( c_1 \frac{\partial^2 u_1}{\partial x^2} + c_2 \frac{\partial^2 u_2}{\partial x^2} \right) \\
+    			&= c_1 \frac{dK_0}{dx} \frac{\partial u_1}{\partial x} + c_2 \frac{dK_0}{dx} \frac{\partial u_2}{\partial x} + c_1 K_0(x) \frac{\partial^2 u_1}{\partial x^2} + c_2 K_0(x) \frac{\partial^2 u_2}{\partial x^2} \\
+    			&= c_1 \frac{dK_0}{dx} \frac{\partial u_1}{\partial x} + c_1 K_0(x) \frac{\partial^2 u_1}{\partial x^2} + c_2 \frac{dK_0}{dx} \frac{\partial u_2}{\partial x} + c_2 K_0(x) \frac{\partial^2 u_2}{\partial x^2} \\
+    			&= c_1 L(u_1) + c_2 L(u_2)
+    		\end{align*}
+    		
+    		\item $ L(u) = \dfrac{\partial}{\partial x} \left( K_0(x,u) \dfrac{\partial u}{\partial x} \right) $
+    		\begin{align*}
+    			L(c_1 u_1 + c_2 u_2) &= \frac{\partial}{\partial x} \left( K_0(x, c_1 u_1 + c_2 u_2) \frac{\partial}{\partial x}(c_1 u_1 + c_2 u_2) \right) \\
+    			&= \frac{\partial}{\partial x} \left( K_0(x, c_1 u_1 + c_2 u_2) \left( c_1 \frac{\partial u_1}{\partial x} + c_2 \frac{\partial u_2}{\partial x} \right) \right) \\
+    			&= \frac{\partial}{\partial x} \left( c_1 K_0(x, c_1 u_1 + c_2 u_2) \frac{\partial u_1}{\partial x} + c_2 K_0(x, c_1 u_1 + c_2 u_2) \frac{\partial u_2}{\partial x} \right) \\
+    			&\neq c_1 \frac{\partial}{\partial x} \left( K_0(x,u_1) \frac{\partial u_1}{\partial x} \right) + c_2 \frac{\partial}{\partial x} \left( K_0(x,u_2) \frac{\partial u_2}{\partial x} \right)
+    		\end{align*}
+    	\end{enumerate}
+    \end{prob}
+
+	\begin{prob}{2.3.2c} $  $ \vspace{2mm} \\
+		$ \dfrac{d^2 \phi}{dx^2} + \lambda \phi = 0, \quad \dfrac{d\phi}{dx}(0) = \dfrac{d\phi}{dx}(L) = 0 $ \\
+		
+		$ r^2 + \lambda = 0 \; \Rightarrow \; r = \pm \sqrt{-\lambda} $ \\
+		
+		If $ \lambda > 0 $
+		\begin{align*}
+			& \phi(x) = c_1\cos(\sqrt{\lambda} x) + c_2\sin(\sqrt{\lambda} x) \\
+			& \phi'(x) = -c_1\sqrt{\lambda} \sin(\sqrt{\lambda}) + c_2\sqrt{\lambda} \cos(\sqrt{\lambda} x) \\
+			& \phi'(0) = 0 = c_2\sqrt{\lambda} \; \Rightarrow \; c_2 = 0 \\
+			& \phi'(L) = 0 = -c_1\sin(\sqrt{\lambda} L) \\
+			& \hspace{0.84cm}  \Rightarrow \lambda = \left( \frac{n\pi}{L} \right)^2 \, , \, n = \pm 1, \pm 2, \dots
+		\end{align*}
+		If $ \lambda = 0 $
+		\begin{align*}
+			& \phi(x) = c_1x + c_2 \\
+			& \phi'(x) = c_1 \\
+			& \phi'(0) = 0 = c_2 \\
+			& \phi'(L) = 0 = c_1 \\
+			& \hspace{0.84cm} \Rightarrow \lambda = 0
+		\end{align*}
+		If $ \lambda < 0 $
+		\begin{align*}
+			& \phi(x) = c_1\cosh(\sqrt{-\lambda} x) + c_2\sinh(\sqrt{-\lambda} x) \\
+			& \phi'(x) = -c_1\sqrt{-\lambda} \sinh(\sqrt{-\lambda} x) + c_2 \sqrt{-\lambda} \cosh(\sqrt{-\lambda} x) \\
+			& \phi'(0) = 0 = c_2 \\
+			& \phi'(L) = 0 = -c_1\sqrt{-\lambda}\sinh(\sqrt{-\lambda} x) \; \Rightarrow c_1 = 0
+		\end{align*}
+		There are no eigenvalues for $ \lambda < 0 $.
+	\end{prob}
+    	
+    \begin{prob}{2.3.2e} $ $  \vspace{2mm} \\
+    	$ \dfrac{d^2 \phi}{dx^2} + \lambda \phi = 0, \quad \dfrac{d\phi}{dx}(0) = \phi(L) = 0 $ \\
+    	
+    	$ r^2 + \lambda = 0 \; \Rightarrow \; r = \pm \sqrt{-\lambda} $ \\
+    	
+    	If $ \lambda > 0 $
+    	\begin{align*}
+    		& \phi(x) = c_1\cos(\sqrt{\lambda} x) + c_2\sin(\sqrt{\lambda} x) \\
+    		& \phi'(x) = -c_1\sqrt{\lambda} \sin(\sqrt{\lambda}) + c_2\sqrt{\lambda} \cos(\sqrt{\lambda} x) \\
+    		& \phi'(0) = 0 = c_2 \\
+    		& \phi(L) = 0 = c_1\cos(\sqrt{\lambda} L) + c_2\sin(\sqrt{\lambda} L) \\
+    		& \hspace{0.84cm}  \Rightarrow \sqrt{\lambda}L = (2n-1)\frac{\pi}{2} \; \Rightarrow \; \lambda = \left( \frac{(2n-1)\pi}{2L} \right)^2 \, , \, n = \pm 1, \pm 2, \dots
+    	\end{align*}
+    	If $ \lambda = 0 $
+    	\begin{align*}
+    		& \phi(x) = c_1x + c_2 \\
+    		& \phi'(x) = c_1 \\
+    		& \phi'(0) = 0 = c_1 \\
+    		& \phi(L) = 0 = c_1L + c_2 \\
+    		& \hspace{0.84cm} \Rightarrow c_2 = 0
+    	\end{align*}
+    	There are no eigenvalues for $ \lambda = 0 $. \\
+    	
+    	If $ \lambda < 0 $
+    	\begin{align*}
+    		& \phi(x) = c_1\cosh(\sqrt{-\lambda} x) + c_2\sinh(\sqrt{-\lambda} x) \\
+    		& \phi'(x) = -c_1\sqrt{-\lambda} \sinh(\sqrt{-\lambda} x) + c_2 \sqrt{-\lambda} \cosh(\sqrt{-\lambda} x) \\
+    		& \phi'(0) = 0 = c_2 \\
+    		& \phi(L) = 0 = c_1\cosh(\sqrt{-\lambda} L) + c_2\sinh(\sqrt{-\lambda} L) \; \Rightarrow \; c_1 = 0
+    	\end{align*}
+    	There are no eigenvalues for $ \lambda < 0 $.
+    \end{prob}
+    
+    \begin{prob}{2.3.3a} $  $ \vspace{1mm} \\
+    	$ u(x,0) = f(x) = 6\sin\left( \dfrac{9\pi x}{L} \right), \quad u(0,t) = u(L,t) = 0 $ \\
+    	
+    	By the principle of superposition,
+    	\[
+    		u(x,0) = \sum\limits_{n=1}^{\infty} B_n e^{-(n\pi/L)^2kt} \sin\left( \frac{n\pi x}{L} \right) = 6\sin\left( \frac{9\pi x}{L} \right)
+    	\]
+    	which implies that $ B_9 = 6 $. Thus,
+    	\[
+    		\boxed{ u(x,t) = 6\sin\left( \frac{9\pi x}{L} \right) e^{-(9\pi/L)^2kt}  }
+    	\]
+    \end{prob}
+    
+    	
+    \begin{prob}{2.3.3b} $ $ \vspace{1mm} \\
+    	Starting with $f(x),$
+    	\begin{align*}
+    		u(x,0) = f(x) &= 3\sin\left( \dfrac{\pi x}{L} \right) - \sin\left( \dfrac{3\pi x}{L} \right) = \sum\limits_{n=1}^{\infty} B_n \sin\left( \frac{n\pi x}{L} \right) \\
+    		& \Rightarrow B_1 = 3, B_3 = -1
+    	\end{align*}
+    	By the principle of superposition, our solution becomes
+    	\[
+    		\boxed{u(x,t) = 3\sin\left( \frac{\pi x}{L} \right) e^{-(n\pi/L)^2 kt} - \sin\left( \frac{3\pi x}{L} \right) e^{-(n\pi/L)^2kt} }
+    	\]
+    \end{prob}
+    
+    \begin{prob}{2.3.5} $ $ \vspace{1mm} \\
+    	Using the fact that $ \sin(a) \sin(b) = \frac{1}{2}(\cos(a-b) - \cos(a+b)) $,
+    	\[
+    		\sin\left( \frac{n\pi x}{L} \right) \sin\left( \frac{m\pi x}{L} \right) = \frac{1}{2} \left( \cos\left( \frac{(n-m)\pi x}{L} \right) - \cos\left( \frac{(n+m)\pi x}{L} \right)  \right)
+    	\]
+    	We then have the following 2 cases: \\
+    	
+    	\underline{Case 1}: $n=m\neq 0$
+    	\begin{align*}
+    		\int_0^L \sin\left( \frac{n\pi x}{L} \right) \sin\left( \frac{m\pi x}{L} \right) \, dx & = \int_0^L \frac{1}{2} \left( 1 - \cos\left( \frac{2n\pi x}{L} \right) \right) \, dx \\
+    		& = \frac{1}{2} \left( x  \, \Big|_{0}^{L} - \frac{L}{2n\pi} \sin\left( \frac{2n\pi x}{L} \right)_{0}^{L} \right) \\
+    		& = \frac{L}{2}
+    	\end{align*}
+    	
+    	\underline{Case 2}: $ n \neq m $
+    	\begin{align*}
+    		\int_0^L \sin\left( \frac{n\pi x}{L} \right) \sin\left( \frac{m\pi x}{L} \right) \, dx & = \frac{1}{2} \left( \int_0^L \cos\left( \frac{(n-m)\pi x}{L} \right) \, dx - \int_0^L \cos\left( \frac{(n+m)\pi x}{L} \right) \, dx \right) \\
+    		& = \frac{1}{2} \left( \frac{L}{(n-m)\pi} \sin\left( \frac{(n-m)\pi x}{L} \right)_{0}^{L} - \frac{L}{(n+m)\pi} \sin\left( \frac{(n+m)\pi x}{L} \right)_{0}^{L} \right) \\
+    		& = \frac{L}{2(n-m)\pi} (\sin((n-m)\pi) - \sin(0)) - \frac{L}{2(n+m)\pi} (\sin((n+m)\pi) - \sin(0)) \\
+    		&= 0
+    	\end{align*}
+    	\[
+    		\therefore \boxed{ \displaystyle \int_0^L \sin\left( \frac{n\pi x}{L} \right) \sin\left( \frac{m\pi x}{L} \right) \, dx = \begin{cases} L/2 \quad n=m \\ 0 \qquad \, n \neq m \end{cases} }
+    	\]
+    \end{prob}
+    	
+    	
+    \begin{prob}{2.4.3} $  $ \vspace{2mm} \\
+    	$ \dfrac{d^2 \phi}{dx^2} + \lambda \phi = 0, \quad \phi(0) = \phi(2\pi)  , \quad \dfrac{d\phi}{dx}(0) = \dfrac{d\phi}{dx}(2\pi) $ \\
+    	
+    	$ r^2 + \lambda = 0 \; \Rightarrow \; r = \pm \sqrt{-\lambda} $ \\
+    	
+    	If $ \lambda > 0 $
+    	\begin{align*}
+    		& \phi(x) = c_1\cos(\sqrt{\lambda} x) + c_2\sin(\sqrt{\lambda} x) \\
+    		& \phi(0) = c_1 = c_1\cos(\sqrt{\lambda} 2\pi) + c_2\sin(\sqrt{\lambda} 2\pi) \\
+    		& \phi'(x) = -c_1\sqrt{\lambda} \sin(\sqrt{\lambda} x) + c_2\sqrt{\lambda} \cos(\sqrt{\lambda} x) \\
+    		& \phi'(0) = c_2 = -c_1\sqrt{\lambda} \sin(\sqrt{\lambda} 2\pi) + c_2\sqrt{\lambda} \cos(\sqrt{\lambda} 2\pi) \\
+    		& \hspace{0.84cm}  \Rightarrow \sqrt{\lambda} 2\pi = 1 \\
+    		& \hspace{0.84cm} \Rightarrow \lambda = n^2 , \, n = \pm 1, \pm 2, \dots
+    	\end{align*}
+    	If $ \lambda = 0 $
+    	\begin{align*}
+    		& \phi(x) = c_1x + c_2 \\
+			& \phi(0) = 0 = c_1 \Rightarrow c_2 = 0
+    	\end{align*}
+    	There are no eigenvalues for $ \lambda = 0 $
+    	If $ \lambda < 0 $
+    	\begin{align*}
+    		& \phi(x) = c_1\cosh(\sqrt{-\lambda} x) + c_2\sinh(\sqrt{-\lambda} x) \\
+    		& \phi(0) = 0 \; \Rightarrow \; c_1 = c_2 = 0
+    	\end{align*}
+    	There are no eigenvalues for $ \lambda < 0 $.
+    \end{prob}
+
+	\begin{prob}{2.4.4} $  $ \vspace{2mm} \\
+		$ \dfrac{d^2 \phi}{dx^2} + \lambda \phi = 0, \quad \dfrac{d\phi}{dx}(0) = \dfrac{d\phi}{dx}(L) = 0 $ \\
+		
+		If $ \lambda < 0 $
+		\begin{align*}
+			& \phi(x) = c_1\cosh(\sqrt{-\lambda} x) + c_2 \sinh(\sqrt{-\lambda} x) \\
+			& \phi'(x) = -c_1\sqrt{-\lambda} \sinh(\sqrt{-\lambda} x) + c_2 \sqrt{-\lambda} \cosh(\sqrt{-\lambda} x) \\
+			& \phi'(0) \; \Rightarrow \; c_2 = -c_1 \\
+			& \Rightarrow \sin(\sqrt{-\lambda} L) > 0 \text{ so } c_1 = 0 \Rightarrow \phi(x) = 0
+		\end{align*}
+		So there are no negative eigenvalues.
+	\end{prob}
+
+	\begin{prob}{2.4.6} $  $
+		\begin{enumerate}[label=\alph*.)]
+			\item For equilibrium, we know that $ \partial u / \partial t = 0 $. So
+			\[
+				\frac{d^2 u}{dx^2} = 0 \Rightarrow u(x) = c_1x + c_2
+			\]
+			From $ u(-L) = u(L) $, we have
+			\[
+				-c_1L + c_2 = c_1L + c_2	
+			\]
+			Thus $ c_1 = 0 $. The second condition $ u'(-L) = u'(L) $ yields $ c_1 = c_1 $. Therefore the equilibrium solution is
+			\[
+				u(x) = c_2
+			\]
+			If a system is in equilibrium, the total energy is constant, and the initial temperature is equal to the final temperature, i.e, $ u(x,0) = f(x) $ and $ u(x) = c_2 $. So we have
+			\begin{align*}
+				\int_{-L}^{L} f(x) \, dx & = \int_{-L}^{L} c_2 \, dx \\
+				&= 2Lc_2 \\ 
+				& \Rightarrow c_2 = \frac{1}{2L} \int_{-L}^{L} f(x) \, dx 
+			\end{align*}
+			Therefore the equilibrium temperature distribution is
+			\[
+				u(x) = \frac{1}{2L} \int_{-L}^{L} f(x) \, dx 
+			\]
+			
+			\item By equation (2.4.38), we know that the solution to the time dependent problem is
+			\[
+				u(x,t) = a_0 + \sum\limits_{n=1}^{\infty} a_n \cos\left( \frac{n\pi x}{L} \right) e^{-(n\pi/L)^2 kt} + \sum\limits_{n=1}^{\infty} b_n \sin\left( \frac{n\pi x}{L} \right) e^{-(n\pi/L)^2kt}
+			\]
+			and by equation (2.4.43),
+			\[
+				a_0 = \frac{1}{2L} \int_{-L}^{L} f(x) \, dx
+			\]
+			Since $ \lim\limits_{t \to \infty} u(x,t) = a_0 $, this implies that 
+			\[
+				u(x) = \frac{1}{2L} \int_{-L}^{L} f(x) \, dx
+			\]
+		\end{enumerate}
+	\end{prob}
+    	
+
+    
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+\end{document}

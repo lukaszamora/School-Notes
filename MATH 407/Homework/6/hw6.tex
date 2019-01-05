@@ -1,0 +1,169 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,mathtools}
+\usepackage{empheq}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+% L-Hospitals rule thing
+\newcommand\myeq{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny L.H}}}{=}}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 6}
+\lhead{MATH 407}
+\cfoot{\thepage}
+
+\title{MATH 407 - Homework 6}
+\author{Lukas Zamora}
+\date{October 18, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{4.61a} $  $ \vspace{2mm} \\ 
+    	Using the parameterization $ h(t) = e^{it} $, $ 0 \leq t \leq 2\pi $, we have
+    	\begin{align*}
+    		\int_C f(z) \, dz = \int_C f(h(t))h'(t) \, dt &= \int_{0}^{2\pi} \left( e^{3it} - ie^{2it} - 5e^{it} + 2i \right) ie^{it} \, dt \\
+    		&= \int_{0}^{2\pi} ie^{4it} + e^{3it} - 5ie^{2it} - 2e^{it} \, dt \\
+    		&= \frac{1}{4} e^{4it} \Big|_{0}^{2\pi} + \frac{1}{3i} e^{3it} \Big|_{0}^{2\pi} - \frac{5}{2} e^{2it} \Big|_{0}^{2\pi} - \frac{2}{i} e^{it} \Big|_{0}^{2\pi} \\
+    		&= \frac{1}{4} e^{8\pi i} - \frac{1}{4} + \frac{1}{3i} e^{6\pi i} - \frac{1}{3i} - \frac{5}{2} e^{4\pi i} + \frac{5}{2} - \frac{2}{i} e^{2\pi i} + \frac{2}{i} \\
+    		&= 0
+    	\end{align*}
+    	Thus Cauchy's Theorem is satisfied. \\
+    \end{prob}
+
+
+	\begin{prob}{4.62} $  $
+		\begin{enumerate}[label=\alph*.)]
+			\item Since the pole $ z = 3 $ is inside $ C $, we can evaluate this integral. Comparing to Cauchy's integral formula for $ f(z_0) $, we see that $ f(z) = 1 $ and $ z_0 = 3 $. So we have 
+			\[
+				1 = \frac{1}{2\pi i} \oint_C \frac{dz}{z-3}
+			\]
+			or
+			\[
+				\oint_C \frac{dz}{z-3} = 2\pi i
+			\]
+			\item No, since $ f(z) = \frac{1}{z-3} $ is not analytic at $ z=3 $.
+		\end{enumerate}
+	\end{prob}
+
+
+	\begin{prob}{4.72ac} $  $ \vspace{2mm} \\
+		Solving directly,
+		\begin{align*}
+			\int_{3+4i}^{4-3i} 6z^2 + 8iz \, dz &= 2z^3 \Big|_{3+4i}^{4-3i} + 4iz^2 \Big|_{3+4i}^{4-3i} \\ 
+			&= 2(4-3i)^3 - 2(3+4i)^3 + 4i(4-3i)^2 - 4i(3+4i)^2 \\
+			&= 338 - 266i
+		\end{align*}
+		\begin{enumerate}[label=\alph*.)]
+			\item Using the parameterization $ h(t) = 3+4i + t(1-7i) $, $ 0 \leq t \leq 1 $, the integral becomes
+				\begin{align*}
+					\int_{3+4i}^{4-3i} 6z^2 + 8iz \, dz &= \int_{0}^{1} \big( 6( 3+4i + t(1-7i))^2 + 8i(3+4i+t(1-7i)) \big) (1-7i) \, dt \\
+					&= \int_{0}^{1} -876t^2 - 944t + 1102 \, dt + i \int_{0}^{1} 1932t^2 - 3192t + 686 \, dt \\
+					&= 338 - 266i
+				\end{align*}
+			\addtocounter{enumi}{1}
+			\item Using the parameterization $ h(t) = 5e^{it}, 0 \leq t \leq 2\pi $, the integral becomes
+				\begin{align*}
+					\int_{3+4i}^{4-3i} 6z^2 + 8iz \, dz &= \int_{0}^{2\pi} 6 \left( 25e^{2it} \right) + 8ie^{it} \, dt \\
+					&= 338 - 266i
+				\end{align*}
+		\end{enumerate}
+	\end{prob}
+	
+	
+	
+	
+	\begin{prob}{5.30ab} $  $
+		\begin{enumerate}[label=\alph*.)]
+			\item Since the pole $ z = 2 $ is inside $ C $, we can evaluate this integral. Comparing to Cauchy's integral formula for $ f(z_0) $, we see that $ f(z) = e^z $ and $ z_0 = 2 $. So we have 
+				\[
+					e^{z} \Big|_{z=2} = \oint_C \frac{e^z}{z-2} \, dz
+				\]
+			or
+				\[
+					\oint_C \frac{e^z}{z-2} \, dz = e^2
+				\]
+			\item Since $ C $ does not enclose the pole $ z=2 $, the integral is 0. \\
+		\end{enumerate}
+	\end{prob}
+
+	\begin{prob}{5.32} $  $
+		\begin{enumerate}[label=\alph*.)]
+			\item Since the pole $ z = \pi i $ is inside $ C $, we can evaluate this integral. Comparing to Cauchy's integral formula for $ f(z_0) $, we see that $ f(z) = e^{3z} $ and $ z_0 = \pi i $. So we have 
+				\[
+					e^{3z} \Big|_{z=\pi i} = \frac{1}{2\pi i} \oint_C \frac{e^{3z}}{z-\pi i} \, dz
+				\]
+				or
+				\begin{align*}
+					\oint_C \frac{e^{3z}}{z-\pi i} \, dz &= 2\pi i e^{3\pi i} \\
+					&= -2\pi i
+				\end{align*}
+			\item Since the pole $ z=\pi i $ is outside the curve $ C $, integral is 0.
+		\end{enumerate}
+	\end{prob}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+\end{document}

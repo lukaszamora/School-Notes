@@ -1,0 +1,59 @@
+\contentsline {chapter}{Contents}{1}
+\contentsline {chapter}{\numberline {1}Vectors}{5}
+\contentsline {section}{\numberline {1.1}The Basics}{5}
+\contentsline {section}{\numberline {1.2}Vector Arithmetic}{6}
+\contentsline {section}{\numberline {1.3}Dot Product}{8}
+\contentsline {section}{\numberline {1.4}Cross Product}{9}
+\contentsline {chapter}{\numberline {2}Three Dimensional Space}{13}
+\contentsline {section}{\numberline {2.1}The 3-D Coordinate System}{13}
+\contentsline {section}{\numberline {2.2}Equations of Lines}{14}
+\contentsline {section}{\numberline {2.3}Equations of Planes}{16}
+\contentsline {section}{\numberline {2.4}Quadric Surfaces}{16}
+\contentsline {section}{\numberline {2.5}Vector Functions}{18}
+\contentsline {section}{\numberline {2.6}Calculus with Vector Functions}{19}
+\contentsline {section}{\numberline {2.7}Tangent, Normal, and Binormal Vectors}{20}
+\contentsline {section}{\numberline {2.8}Arc Length with Vector Functions}{20}
+\contentsline {section}{\numberline {2.9}Curvature}{21}
+\contentsline {section}{\numberline {2.10}Velocity and Acceleration}{22}
+\contentsline {section}{\numberline {2.11}Cylindrical Coordinates}{22}
+\contentsline {section}{\numberline {2.12}Spherical Coordinates}{23}
+\contentsline {chapter}{\numberline {3}Partial Derivatives}{25}
+\contentsline {section}{\numberline {3.1}Limits}{25}
+\contentsline {section}{\numberline {3.2}Partial Derivatives}{27}
+\contentsline {section}{\numberline {3.3}Higher Order Partial Derivatives}{28}
+\contentsline {section}{\numberline {3.4}Differentials}{29}
+\contentsline {section}{\numberline {3.5}Chain Rule}{29}
+\contentsline {section}{\numberline {3.6}Directional Derivatives}{31}
+\contentsline {chapter}{\numberline {4}Applications of Partial Derivatives}{33}
+\contentsline {section}{\numberline {4.1}Tangent Planes and Linear Approximations}{33}
+\contentsline {section}{\numberline {4.2}Gradient Vector, Tangent Planes and Normal Lines}{35}
+\contentsline {section}{\numberline {4.3}Relative Minimums and Maximums}{36}
+\contentsline {section}{\numberline {4.4}Absolute Minimums and Maximums}{37}
+\contentsline {section}{\numberline {4.5}Lagrange Multipliers}{39}
+\contentsline {chapter}{\numberline {5}Multiple Integrals}{41}
+\contentsline {section}{\numberline {5.1}Double Integrals}{41}
+\contentsline {section}{\numberline {5.2}Iterated Integrals}{43}
+\contentsline {section}{\numberline {5.3}Double Integrals Over General Regions}{44}
+\contentsline {section}{\numberline {5.4}Double Integrals in Polar Coordinates}{47}
+\contentsline {section}{\numberline {5.5}Triple Integrals}{49}
+\contentsline {section}{\numberline {5.6}Triple Integrals in Cylindrical Coordinates}{52}
+\contentsline {section}{\numberline {5.7}Triple Integrals in Spherical Coordinates}{52}
+\contentsline {section}{\numberline {5.8}Change of Variables}{53}
+\contentsline {section}{\numberline {5.9}Surface Area}{54}
+\contentsline {section}{\numberline {5.10}Physical Applications of Double Integrals}{55}
+\contentsline {chapter}{\numberline {6}Line Integrals}{57}
+\contentsline {section}{\numberline {6.1}Vector Fields}{57}
+\contentsline {section}{\numberline {6.2}Line Integrals - Part I}{58}
+\contentsline {section}{\numberline {6.3}Line Integrals - Part II}{60}
+\contentsline {section}{\numberline {6.4}Line Integrals of Vector Fields}{61}
+\contentsline {section}{\numberline {6.5}Fundamental Theorem for Line Integrals}{61}
+\contentsline {section}{\numberline {6.6}Conservative Vector Fields}{63}
+\contentsline {section}{\numberline {6.7}Green's Theorem}{64}
+\contentsline {section}{\numberline {6.8}Curl and Divergence}{66}
+\contentsline {chapter}{\numberline {7}Surface Integrals}{69}
+\contentsline {section}{\numberline {7.1}Parametric Surfaces}{69}
+\contentsline {section}{\numberline {7.2}Surface Integrals}{70}
+\contentsline {section}{\numberline {7.3}Surface Integrals of Vector Fields}{71}
+\contentsline {section}{\numberline {7.4}Stokes' Theorem}{72}
+\contentsline {section}{\numberline {7.5}Divergence Theorem}{73}
+\contentsline {chapter}{}{73}

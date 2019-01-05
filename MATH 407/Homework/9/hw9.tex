@@ -1,0 +1,130 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb}
+\usepackage{esint}
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 9}
+\lhead{MATH 407}
+\cfoot{\thepage}
+
+\title{MATH 407 -- Homework 9}
+\author{Lukas Zamora}
+\date{November 15, 2018}
+
+\setlength\parindent{0pt}
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{6.91} $ $
+    	\begin{enumerate}[label=\alph*.)]
+    		\item $|z|<3$ 
+    			\[
+    				f(z) = \frac{1}{z-3} = \frac{-1}{3-z} = \frac{-1}{3(1-z/3)} = -\frac{1}{3} \sum\limits_{n=0}^{\infty} \left( \frac{z}{3} \right)^n = \sum\limits_{n=0}^{\infty} \frac{-z^n}{3^{n+1}}, \; |z|<3. 
+    			\]
+    		\item $|z|>3$
+    			\[
+    				f(z) = \frac{1}{z-3} = \frac{1}{z(1-3/z)} = \sum\limits_{n=0}^{\infty} \frac{3^{n-1}}{z^n}, \; |z|>3.
+    			\] 
+    	\end{enumerate}
+    \end{prob}
+
+    \begin{prob}{6.92abc} $ $
+    	\begin{enumerate}[label=\alph*.)]
+    		\item $|z|<1$
+    			\begin{align*}
+    				f(z) = \frac{z}{(z-1)(2-z)} &= \frac{-1}{1-z} + \frac{2}{2-z} \\
+    					&= \frac{-1}{1-z} + \frac{1}{1-z/2} \\
+    					&= -(1+z+z^2+z^3+\dots) + \left( 1 + \frac{z}{2} + \left(\frac{z}{2}\right)^2 + \left(\frac{z}{2}\right)^3 + \dots \right) \\
+    					&= -\frac{z}{z} - \frac{3z^2}{4} - \frac{7z^3}{8} - \dots
+    			\end{align*}
+    		\item $1<|z|<2$
+    			\begin{align*}
+    				f(z) &= \frac{1}{z(1-1/z)} + \frac{1}{1-z/2} \\
+    					 &= \frac{1}{z} \left( 1 + \frac{1}{z} + \left(\frac{1}{z}\right)^2 + \left(\frac{1}{z}\right)^3 + \dots \right) + \left( 1 + \frac{z}{2} + \left(\frac{z}{2}\right)^2 + \left(\frac{z}{2}\right)^3 + \dots \right) \\
+    					 &= \dots + \left(\frac{1}{z}\right)^3 + \left(\frac{1}{z}\right)^2 + \frac{1}{z} + 1 + \frac{z}{2} + \left(\frac{z}{2}\right)^2 + \left(\frac{z}{2}\right)^3 + \dots
+    			\end{align*}
+    		\item $|z|>2$
+    			\begin{align*}
+    				f(z) &= \frac{1}{z(1-1/z)} + \frac{1}{1-z/2} \\
+    					 &= \frac{1}{z}\left( 1 + \frac{1}{z} + \left( \frac{1}{z} \right)^2 + \left(\frac{1}{z}\right)^3 + \dots \right) - \frac{z}{2}\left( 1 + \frac{2}{z} + \left(\frac{2}{z}\right)^2 + \left(\frac{2}{z}\right)^3 + \dots \right) \\
+    					 &= -\frac{1}{z} - \frac{3}{z^2} - \frac{7}{z^3} - \frac{15}{z^4} - \dots
+    			\end{align*}	
+    	\end{enumerate}
+    \end{prob}
+
+    \newpage
+
+    \begin{prob}{6.92de} $ $
+    	\begin{enumerate}[label=\alph*.)]
+    		\setcounter{enumi}{3}
+    		\item $|z-1|>1 \Rightarrow \frac{1}{|z-1|} < 1 $
+    			\begin{align*}
+    				f(z) &= \frac{1}{z-1} - \frac{2}{z-2} \\
+    					 &= \frac{1}{z-1} - \frac{2}{z-1-1} \\
+    					 &= \frac{1}{z-1} - \frac{2}{(z-1)\left( 1 - \frac{1}{z-1} \right)} \\
+    					 &= \frac{1}{z-1} - \frac{2}{z-1} \left( 1 + \frac{1}{z-1} + \left( \frac{1}{z-1} \right)^2 + \dots \right) \\
+    					 &= -\frac{1}{z-1} - \frac{2}{(z-1)^2} - \frac{2}{(z-1)^3} - \dots
+    			\end{align*}
+    		\item $0<|z-2|<1$
+    			\begin{align*}
+    				f(z) &= \frac{1}{z-1} - \frac{2}{z-2} \\ 
+    					 &= \frac{1}{z-2+1} - \frac{2}{z-2} \\
+    					 &= \left( 1 - (z-2) - (z-2)^2 - \dots \right) - \frac{2}{z-2}\\
+    					 &= -\frac{2}{z-2} + 1 - (z-2) + (z-2)^2 + (z-2)^3 + \dots
+    			\end{align*}
+    	\end{enumerate}
+    \end{prob}
+
+    \begin{prob}{6.93} $ $
+    	\begin{enumerate}[label=\alph*.)]
+    		\item $0<|z|<2 \Rightarrow \left| \frac{z}{2} \right| < 1$
+    			\[
+    				f(z) = \frac{1}{z(z-2)} = \frac{-1}{2z\left( 1 - z/2 \right)} = \frac{1}{2z} \sum\limits_{n=1}^{\infty} \left(\frac{z}{2}\right)^n = \sum\limits_{n=0}^{\infty} \frac{z^{n-1}}{2^{n+1}}
+    			\]
+    		\item $|z|>2 \Rightarrow \left| \frac{2}{z} \right|<1$
+    			\[
+    				f(z) = \frac{1}{z(z-2)} = \frac{1}{z^2\left( 1 - 2/z \right)} = \frac{1}{z^2} \sum\limits_{n=0}^{\infty} \left( \frac{2}{z} \right)^n = \sum\limits_{n=1}^{\infty} \frac{2^n}{z^{n+2}}
+    			\]
+    	\end{enumerate}
+    \end{prob}
+
+    \begin{prob}{6.114} $ $ \vspace{2mm} \\
+    	Let $f(z) = z\ln(z)$. We have that 
+			\begin{alignat*}{5}
+				&f'(z) = 1+ \ln(z) \quad &&f''(z) = 1/z \quad &&f'''(z) = -1/z^2 \quad &&f^{(4)}(z) = 2/z^3 \quad &&f^{(5)}(z) = -6/z^4 \\
+				&f'(1) = 1 &&f''(1) = 1 &&f'''(1) = -1 &&f^{(4)}(1) = 2 &&f^{(5)}(1) = -6
+			\end{alignat*}
+		By $f(z)$'s Taylor series, we have
+			\begin{align*}
+				f(z) &= \frac{(z-1)}{1!} + \frac{(z-1)^2}{2!} + \frac{-(z-1)^3}{3!} + \frac{2(z-1)^4}{4!} + \dots \\
+					 &= (z-1) + \frac{(z-1)^2}{1 \cdot 2} - \frac{(z-1)^3}{2 \cdot 3} + \frac{(z-1)^4}{3 \cdot 4} + \dots
+			\end{align*}
+    \end{prob}
+
+
+
+\end{document}

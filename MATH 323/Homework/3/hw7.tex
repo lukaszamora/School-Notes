@@ -1,0 +1,167 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,mathtools}
+\usepackage{empheq}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+% L-Hospitals rule thing
+\newcommand\myeq{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny L.H}}}{=}}
+
+
+\theoremstyle{definition}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Homework 3}
+\lhead{MATH 323}
+\cfoot{\thepage}
+
+\title{MATH 323 - Homework 3}
+\author{Lukas Zamora}
+\date{September 20, 2018}
+
+\setlength\parindent{0pt}
+
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{3.1.1d} $  $
+    	\[
+    		\begin{vmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{vmatrix} = \cos^2\theta - (-\sin^2\theta) = \boxed{1}
+    	\]
+    \end{prob}
+
+	\begin{prob}{3.1.1h} $  $ 
+		\[
+			\begin{vmatrix} -6 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 5 \end{vmatrix} = -6(2)(5) = \boxed{-60}
+		\]
+	\end{prob}
+
+	\begin{prob}{3.1.5b} $  $ 
+		\begin{align*}
+			\begin{vmatrix} 0 & 5 & 4 & 0 \\ 4 & 1 & -2 & 7 \\ -1 & 0 & 3 & 0 \\ 0 & 2 & 1 & 5 \end{vmatrix} &= -5 \begin{vmatrix} 4 & -2 & 7 \\ -1 & 3 & 0 \\ 0 & 1 & 5 \end{vmatrix} + 4\begin{vmatrix} 4 & 1 & 7 \\ -1 & 0 & 0 \\ 0 & 2 & 5 \end{vmatrix} \\
+			&= -5(4(15) + 2(-5) + 7(-1) ) + 4( -1(-5) + 7(-2) ) \\
+			&= -5(43) + 4(-9) \\
+			&= \boxed{-251}
+		\end{align*}
+	\end{prob}
+
+	\begin{prob}{3.1.5c} $  $
+		\[
+			\begin{vmatrix} 2 & 1 & 9 & 7 \\ 0 & -1 & 3 & 8 \\ 0 & 0 & 5 & 2 \\ 0 & 0 & 0 & 6 \end{vmatrix} = 6 \begin{vmatrix} 2 & 1 & 9 \\ 0 & -1 & 3 \\ 0 & 0 & 5 \end{vmatrix} = 6(2(-1)(5)) = \boxed{-60}
+		\]
+	\end{prob}
+
+	\begin{prob}{3.1.11b} $  $ \vspace{1mm} \\
+		$ \text{Volume} = | \det[\mathbf{x} | \mathbf{y} | \mathbf{z}] | = \left| \det \begin{bmatrix} 4 & -2 & 7 \\ -1 & 3 & 0 \\ 0 & 1 & 5 \end{bmatrix} \right| = | (-5) + 12 | = \boxed{7} $ 
+	\end{prob}
+
+	\begin{prob}{3.1.11d} $  $ \vspace{1mm} \\
+		$ \text{Volume} = | \det[\mathbf{x} | \mathbf{y} | \mathbf{z}] | = \left| \det \begin{bmatrix} 1 & 2 & 0 \\ 3 & 2 & -1 \\ 5 & -2 & -1 \end{bmatrix} \right| = | (-2-2) - 2(-3+5) | = \boxed{8} $ 
+	\end{prob}
+
+	\begin{prob}{3.13} $  $
+		\begin{enumerate}[label=\alph*.)]
+			\item 
+				\begin{proof}
+					Let $ A \in \mathbf{R}^{n\times n} $. Consider the determinant of $ A $ multiplied by a scalar $ c $.
+					\[
+						\det(cA) = \begin{vmatrix} ca_{11} & ca_{12} & \dots & ca_{1n} \\ ca_{21} & ca_{22} & \dots & ca_{2n} \\
+						\vdots & \vdots & \ddots & \vdots \\ ca_{n1} & ca_{n2} & \dots & ca_{nn}  \end{vmatrix}
+					\]
+					Recall that if we take a matrix $ A $ and multiply any row or column by a scalar $ c $ the new determinant of that matrix will be $ c $-times the original since cofactor expansion along that row would yield a determinant $ c $-times greater. In this case we have $ n $ rows. So,
+					\[
+						\det(cA) = 
+						\underbrace{c \cdot c \cdot c \cdots c}_\text{n \text{times}} \det(A) = c^n \det(A)
+					\]
+				\end{proof}
+			\item Let $ \mathbf{x} = [x_1, x_2, x_3] $, $ \mathbf{y} = [y_1, y_2, y_3] $, $ \mathbf{z} = [z_1, z_2, z_3] $. The volume of the parallelepiped is given by
+			\[
+				\det([\mathbf{x} | \mathbf{y} | \mathbf{z}]) = \begin{vmatrix} x_1 & x_2 & x_3 \\ y_1 & y_2 & y_3 \\ z_1 & z_2 & z_3 \end{vmatrix}
+			\]
+			If each side is doubled by 2, then the sides become $ [2x_1, 2x_2, 2x_3], [2y_1, 2y_2, 2y_3], [2z_1, 2z_2, 2z_3] $. So every entry in our matrix is multiplied by 2. We know that this is a $ 3\times 3 $ matrix, so $ n=3 $. By part(a), the volume is then $ \det(2[\mathbf{x} | \mathbf{y} | \mathbf{z}]) = 2^3 \det([\mathbf{x} | \mathbf{y} | \mathbf{z}]) = 8\det([\mathbf{x} | \mathbf{y} | \mathbf{z}]) $.
+		\end{enumerate}
+	\end{prob}
+    
+    \begin{prob}{3.1.16} $  $
+    	\begin{enumerate}[label=\alph*.)]
+    		\item $ \begin{vmatrix} 1 & 1 & 1 \\ a & b & c \\ a^2 & b^2 & c^2 \end{vmatrix} = \begin{vmatrix} 1 & a & a^2 \\ 1 & b & b^2 \\ 1 & c & c^2 \end{vmatrix} = \begin{vmatrix} 1 & a & a^2 \\ 0 & b-a & b^2-a^2 \\ 0 & c-a & c^2-a^2 \end{vmatrix} = (b-a)(c-a) \begin{vmatrix} 1 & a & a \\ 0 & 1 & b+a \\ 0 & 1 & c+a \end{vmatrix}  = \boxed{(b-a)(c-a)(c-b)} $
+    		
+    		\item $ \begin{vmatrix} 1 & 1 & 1 \\ 2 & 3 & -2 \\ 4 & 9 & 4 \end{vmatrix} = (2-3)(3+2)(-2-2) = \boxed{20} $
+    	\end{enumerate}
+    \end{prob}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+\end{document}

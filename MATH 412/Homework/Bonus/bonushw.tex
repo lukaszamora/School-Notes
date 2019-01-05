@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,tikz,fancyhdr,bm,enumitem,amssymb,empheq}
+\usepackage{esint}
+
+\theoremstyle{definition}
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+
+\newcustomtheorem{prob}{Problem}
+\newcustomtheorem{customlemma}{Lemma}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Lukas Zamora}
+\chead{Bonus Homework}
+\lhead{MATH 412}
+\cfoot{\thepage}
+
+\title{MATH 412 -- Bonus Homework}
+\author{Lukas Zamora}
+\date{December 5, 2018}
+
+\setlength\parindent{0pt}
+
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{prob}{1} $  $ \vspace{3mm} \\
+        From the characteristic,
+        \[
+            \frac{dx}{dt} = 0
+        \]
+        Thus $u=c$ and 
+        \begin{align*}
+            \frac{dt}{1} = \frac{dx}{x} \quad \Rightarrow \quad \log(x) + \tilde{c} \quad &\Rightarrow x = \tilde{c} e^t \\
+            &\Rightarrow \tilde{c} = xe^{-t}
+        \end{align*}
+        Hence our solution is of the form $u=f(xe^{-t})$. \\
+
+        For $x<0$:
+        \[
+            4 = u(x,0) = f(x)
+        \]
+        For $3<x<4$:
+        \[
+            u(x,0) = 1 = f(x)
+        \]
+        For $0<x<3$:
+        \[
+            4-x = u(x,0) = f(x)
+        \]
+        For $x>4$:
+        \[
+            12 = u(x,0) = f(x)
+        \]
+        Thus 
+        \[
+            u(x,t) = \begin{cases} 4 & x<0 \\ 4-xe^{-t} & 0<x<3 \\ 1 & 3<x<4 \\ 12 &x>4   \end{cases}
+        \]
+        
+    \end{prob}
+    
+
+    \begin{prob}{3} $  $ \vspace{3mm} \\
+        Consider de'Alembert's formula,
+        \[
+            u(x,t) = \frac{1}{2}(f(x-ct) + f(x+ct)) + \frac{1}{2c}\int_{x-ct}^{x+ct} g(\bar{x}) \, d\bar{x}
+        \]
+        Here, $c=3$ and $g(x)=0$ from the initial condition. We then have
+        \begin{align*}
+            u(x,t) &= \frac{1}{2}(f(x-3t) + f(x+3t)) \\
+                   &= \frac{1}{2} \left( e^{2(x-3t)} + e^{2(x+3t)} \right) \\
+                   &= \frac{1}{2} e^{2x}\left( e^{-6t} + e^{6t} \right) \\
+                   &= e^{2x} \cosh(6t)
+        \end{align*}
+        Checking our solution,
+        \[
+            u_{tt} = 36e^{2x}\cosh(6t) = 4e^{2x}\cosh(6t) = 9u_{xx}
+        \]
+        Thus
+        \[
+            u(x,t) = e^{2x}\cosh(6t)
+        \]
+    \end{prob}
+    
+
+\end{document}
